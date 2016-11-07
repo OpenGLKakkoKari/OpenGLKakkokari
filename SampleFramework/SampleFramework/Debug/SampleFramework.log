@@ -1,0 +1,98 @@
+﻿2016/11/07 9:51:36 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.vcxproj" (Build ターゲット)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Os /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Framework\Debug\Debug.cpp Source\Framework\Effect\EffectBillboard.cpp Source\Framework\File\Reader\TextReader.cpp Source\Framework\Input\Joystick.cpp Source\Framework\Manager.cpp Source\Framework\SceneManager.cpp Source\Framework\Stage.cpp Source\Game\Character\Character.cpp Source\Game\Character\Computer.cpp Source\Game\GameScene.cpp Source\Game\Plant.cpp
+         Joystick.cpp
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(79): warning C4800: 'DWORD' : ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(95): warning C4804: '~' : 演算中の 'bool' 型の使用方法が安全ではありません
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(95): warning C4805: '&' : 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(96): warning C4804: '~' : 演算中の 'bool' 型の使用方法が安全ではありません
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(96): warning C4805: '&' : 演算中の 'bool' 型と 'int' 型の混用は安全ではありません
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(109): warning C4804: '~' : 演算中の 'bool' 型の使用方法が安全ではありません
+     1>c:\users\phite\desktop\sampleframework\sampleframework\source\framework\input\joystick.cpp(109): warning C4800: 'int' : ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+         コードを生成中...
+         スキップ中... (関連する変更は検出されませんでした)
+         Plant.cpp
+         GameScene.cpp
+         Computer.cpp
+         Character.cpp
+         Stage.cpp
+         SceneManager.cpp
+         Manager.cpp
+         TextReader.cpp
+         EffectBillboard.cpp
+         Debug.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.lib" /MACHINE:X86 Debug\DirectXRenderer.obj
+         Debug\DirectXTexture.obj
+         Debug\Billboard.obj
+         Debug\Camera.obj
+         Debug\OBB.obj
+         Debug\Debug.obj
+         Debug\DebugTimer.obj
+         Debug\Text.obj
+         Debug\Tweaker.obj
+         Debug\DrawObject.obj
+         Debug\Effect.obj
+         Debug\EffectBillboard.obj
+         Debug\Emitter.obj
+         Debug\Error.obj
+         Debug\Fade.obj
+         Debug\File.obj
+         Debug\EffectReader.obj
+         Debug\ModelReader.obj
+         Debug\Reader.obj
+         Debug\SkinMeshModelReader.obj
+         Debug\SoundReader.obj
+         Debug\TextReader.obj
+         Debug\TextureReader.obj
+         Debug\BinaryWriter.obj
+         Debug\Fps.obj
+         Debug\GameObject.obj
+         Debug\Joystick.obj
+         Debug\Keyboard.obj
+         Debug\Manager.obj
+         Debug\Random.obj
+         Debug\Matrix.obj
+         Debug\Mesh.obj
+         Debug\Object.obj
+         Debug\SceneManager.obj
+         Debug\Stage.obj
+         Debug\StateManager.obj
+         Debug\TokenAnalyzer.obj
+         Debug\Character.obj
+         Debug\CharacterStateNeutral.obj
+         Debug\Computer.obj
+         Debug\Player.obj
+         Debug\GameCamera.obj
+         Debug\MeshField.obj
+         Debug\Model.obj
+         Debug\Motion.obj
+         Debug\MotionModel.obj
+         Debug\Polygon.obj
+         Debug\Quaternion.obj
+         Debug\Renderer.obj
+         Debug\SkinMeshModel.obj
+         Debug\Sound.obj
+         Debug\SoundManager.obj
+         Debug\SoundPlayer.obj
+         Debug\Sprite.obj
+         Debug\Texture.obj
+         Debug\Vector2.obj
+         Debug\Vector3.obj
+         Debug\Vector4.obj
+         Debug\Viewport.obj
+         Debug\GameWindow.obj
+         Debug\MainController.obj
+         Debug\Window.obj
+         Debug\GameScene.obj
+         Debug\Plant.obj
+         Debug\Main.obj
+         Debug\OpenGLRenderer.obj
+         Debug\TitleScene.obj
+         SampleFramework.vcxproj -> C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.exe
+     1>プロジェクト "C:\Users\phite\Desktop\SampleFramework\SampleFramework\SampleFramework.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:02.68

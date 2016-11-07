@@ -1,0 +1,201 @@
+#==============================================================================
+#
+# ステージの設定
+#
+#==============================================================================
+SCRIPT          # この行は絶対消さないこと！
+
+#------------------------------------------------------------------------------
+# フィールドの配置
+#------------------------------------------------------------------------------
+
+FIELD
+    TEXTURE = data/TEXTURE/Field/sand000.jpg
+    SIZE    = 10000.0 10000.0
+    BLOCK   = 32 32
+    DATA    = data/BINARY/map.dat
+END_FIELD
+
+#------------------------------------------------------------------------------
+# スカイボックスの配置
+#------------------------------------------------------------------------------
+
+SKYBOX
+    TEXTURE = data/TEXTURE/Skybox/skybox000.jpg
+END_SKYBOX
+
+#------------------------------------------------------------------------------
+# モデルの配置
+#------------------------------------------------------------------------------
+
+
+MODELSET
+    MODEL   = data/MODEL/mikan.x
+    POS     = 1000.0 0.0 1500.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/hajime.x
+    POS     = 1000.0 0.0 1000.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+
+
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3300.0 225.0 -2700.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 -2700.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 -2100.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 -1500.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 -900.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 -300.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 300.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 900.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 1500.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 2100.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -3150.0 0.0 2700.0
+    ROT     = 0.0 90.0 0.0
+END_MODELSET
+
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -2700.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -2100.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -1500.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -900.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = -300.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = 300.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = 900.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = 1500.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = 2100.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/stonewall_long.x
+    POS     = 2700.0 0.0 3150.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+
+
+#------------------------------------------------------------------------------
+# 草木の配置
+#------------------------------------------------------------------------------
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -3000.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -2800.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -2600.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -2400.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -2200.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+PLANTSET
+    TEXTURE = data/TEXTURE/Plant/tree005.png
+    POLYNUM = 3
+    POS     = -2000.0 300.0 -3000.0
+    SCALE   = 300.0 600.0
+END_PLANTSET
+
+
+#==============================================================================
+END_SCRIPT      # この行は絶対消さないこと！
+
