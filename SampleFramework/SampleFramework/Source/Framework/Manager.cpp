@@ -165,8 +165,7 @@ void Manager::Init(HINSTANCE hInstance)
     pSoundManager = new SoundManager;
     pSoundManager->Init();
 
-    pSoundManager->Load("BGM1", "data/SOUND/bgm1.wav");
-    pSoundManager->Load("BGM2", "data/SOUND/bgm2.wav");
+    pSoundManager->Load("BGM1", "data/SOUND/bgm.wav");
     pSoundManager->Load("SE1", "data/SOUND/se001.wav");
     pSoundManager->Load("SE2", "data/SOUND/se002.wav");
     pSoundManager->Load("SE3", "data/SOUND/se003.wav");
