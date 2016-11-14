@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{9a8ae960-9a83-4bda-8b34-c6fafa67c67a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{04520420-c2a3-4106-ae6a-67e555b7420f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\libpng">
+      <UniqueIdentifier>{12514714-8b61-4036-b4ee-bb631901958e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\libjpeg">
+      <UniqueIdentifier>{519f3229-4d41-4a7d-9223-97ad9630f770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\libogg">
+      <UniqueIdentifier>{1c3dacb5-fe44-4cc0-b877-1bec6d680fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\OpenAL">
+      <UniqueIdentifier>{72eca674-1f30-47b9-bd1a-f35fc2656df3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\libogg\vorbis">
+      <UniqueIdentifier>{9095ac05-24b8-4dbc-9832-16dcae137fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\libogg\ogg">
+      <UniqueIdentifier>{346af65a-9b2b-4703-a2e3-99e4b9ffb426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{cf7978d5-2dec-45ce-8fe1-f68f170afb9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectX">
+      <UniqueIdentifier>{c6f915f2-8a47-4f60-ad77-d1e9adb61c15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\File">
+      <UniqueIdentifier>{d35e79eb-7abf-414e-86e0-53a12db48a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\File\Reader">
+      <UniqueIdentifier>{19d5ab03-471c-4db1-b423-2b05ce49cce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\File\Writer">
+      <UniqueIdentifier>{bfb747e9-d850-4073-acde-d028099d112b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Debug">
+      <UniqueIdentifier>{7c7c621e-0255-45a5-9b20-e47807e714cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Math">
+      <UniqueIdentifier>{d353e935-9980-49b4-bada-9af0c3f69d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Sound">
+      <UniqueIdentifier>{a4ed66a0-62f9-4572-b1e0-6e2f9821abad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Mesh">
+      <UniqueIdentifier>{83a93634-552c-4afd-bfe2-52a9a609b791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Texture">
+      <UniqueIdentifier>{84d8be06-c623-4362-aa97-f48b1ca45df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input">
+      <UniqueIdentifier>{3759e792-ed91-417a-a506-72c645054b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Title">
+      <UniqueIdentifier>{0e10fd71-a6e0-4301-901d-f37c28e62777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game">
+      <UniqueIdentifier>{b0162544-e17a-411b-a768-4bccce2e7bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Result">
+      <UniqueIdentifier>{48076777-a2c3-4bf7-ae13-973f01bd1db8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Windows">
+      <UniqueIdentifier>{6f1ef435-7326-467e-922a-6422fe46d100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Effect">
+      <UniqueIdentifier>{4f52a03c-eb94-4c18-a1e2-92db5785b729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Collision">
+      <UniqueIdentifier>{61142b71-a5df-42b6-87c7-9054a18a4ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Character">
+      <UniqueIdentifier>{7766e06c-1731-4c62-96cd-3cfbc5ec5d6d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OpenGL\OpenGLRenderer.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DirectX\DirectXRenderer.cpp">
+      <Filter>DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DirectX\DirectXTexture.cpp">
+      <Filter>DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\File.cpp">
+      <Filter>Framework\File</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Writer\BinaryWriter.cpp">
+      <Filter>Framework\File\Writer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\TextureReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\ModelReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\Reader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\SoundReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\TextReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Debug\Tweaker.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Debug\Debug.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Debug\DebugTimer.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Debug\Text.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Random.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Sound\SoundPlayer.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Sound\Sound.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Sound\SoundManager.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Error.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Fps.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Manager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Camera.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Viewport.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Sprite.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Polygon.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Billboard.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Windows\Window.cpp">
+      <Filter>Framework\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Windows\GameWindow.cpp">
+      <Filter>Framework\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Windows\MainController.cpp">
+      <Filter>Framework\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\EffectReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Effect\Effect.cpp">
+      <Filter>Framework\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Effect\EffectBillboard.cpp">
+      <Filter>Framework\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Input\Keyboard.cpp">
+      <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Collision\OBB.cpp">
+      <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Fade.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Renderer.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\File\Reader\SkinMeshModelReader.cpp">
+      <Filter>Framework\File\Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\DrawObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Mesh\Mesh.cpp">
+      <Filter>Framework\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Mesh\Model.cpp">
+      <Filter>Framework\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Mesh\Motion.cpp">
+      <Filter>Framework\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Mesh\MotionModel.cpp">
+      <Filter>Framework\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Mesh\SkinMeshModel.cpp">
+      <Filter>Framework\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\MeshField.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Texture\Texture.cpp">
+      <Filter>Framework\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Matrix.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Vector2.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Vector3.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Vector4.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Math\Quaternion.cpp">
+      <Filter>Framework\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Object.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\GameObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Effect\Emitter.cpp">
+      <Filter>Framework\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\TokenAnalyzer.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Input\Joystick.cpp">
+      <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\SceneManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Title\TitleScene.cpp">
+      <Filter>Source\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameScene.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameCamera.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\StateManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Character\CharacterStateNeutral.cpp">
+      <Filter>Source\Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Character\Character.cpp">
+      <Filter>Source\Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Character\Player.cpp">
+      <Filter>Source\Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Character\Computer.cpp">
+      <Filter>Source\Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Stage.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Plant.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib\libpng\pnglibconf.h">
+      <Filter>Library\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpng\zconf.h">
+      <Filter>Library\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpng\zlib.h">
+      <Filter>Library\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpng\png.h">
+      <Filter>Library\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libpng\pngconf.h">
+      <Filter>Library\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\OpenAL\al.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\OpenAL\alc.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libjpeg\jerror.h">
+      <Filter>Library\libjpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libjpeg\jmorecfg.h">
+      <Filter>Library\libjpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libjpeg\jpeglib.h">
+      <Filter>Library\libjpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libjpeg\jconfig.h">
+      <Filter>Library\libjpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libogg\vorbis\codec.h">
+      <Filter>Library\libogg\vorbis</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libogg\vorbis\vorbisenc.h">
+      <Filter>Library\libogg\vorbis</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libogg\vorbis\vorbisfile.h">
+      <Filter>Library\libogg\vorbis</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libogg\ogg\os_types.h">
+      <Filter>Library\libogg\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\libogg\ogg\ogg.h">
+      <Filter>Library\libogg\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Main.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGLTextureFactory.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGLTexture.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGLRenderer.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectXTextureFactory.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectX.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectXRenderer.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectXTexture.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Color.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Error.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Fps.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Light.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Manager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Renderer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Vertex.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Debug\Debug.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Debug\DebugTimer.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Debug\Text.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Debug\Tweaker.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\File.h">
+      <Filter>Framework\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Writer\Writer.h">
+      <Filter>Framework\File\Writer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Writer\BinaryWriter.h">
+      <Filter>Framework\File\Writer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\ModelReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\Reader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\SoundReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\TextReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\TextureReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Random.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Math.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Sound\SoundPlayer.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Sound\Sound.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Sound\SoundManager.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Camera.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Viewport.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Sprite.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Polygon.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Billboard.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Windows\Window.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Windows\Controller.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Windows\GameWindow.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Windows\MainController.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\EffectReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Effect\Effect.h">
+      <Filter>Framework\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Effect\EffectData.h">
+      <Filter>Framework\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Effect\Emitter.h">
+      <Filter>Framework\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Effect\EffectBillboard.h">
+      <Filter>Framework\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Input\Keyboard.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Collision\OBB.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Fade.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\File\Reader\SkinMeshModelReader.h">
+      <Filter>Framework\File\Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\DrawObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\State.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameCamera.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Title\TitleCamera.h">
+      <Filter>Source\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\Bone.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\MaterialData.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\Mesh.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\Model.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\Motion.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\MotionModel.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\SkinMeshModel.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Mesh\SkinMeshDataHeader.h">
+      <Filter>Framework\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Material.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\MeshField.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Texture\TextureFactory.h">
+      <Filter>Framework\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Texture\Texture.h">
+      <Filter>Framework\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Matrix.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Vector2.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Vector3.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Vector4.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Math\Quaternion.h">
+      <Filter>Framework\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Object.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\GameObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Effect\ParticleData.h">
+      <Filter>Framework\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\VertexBuffer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\IndexBuffer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectXIndexBuffer.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectX\DirectXVertexBuffer.h">
+      <Filter>DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGLVertexBuffer.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGL\OpenGLIndexBuffer.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\TokenAnalyzer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Input\Joystick.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Scene.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\SceneManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Title\TitleScene.h">
+      <Filter>Source\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameScene.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\StateManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Character\CharacterStateNeutral.h">
+      <Filter>Source\Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Character\Character.h">
+      <Filter>Source\Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Character\Player.h">
+      <Filter>Source\Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Character\Computer.h">
+      <Filter>Source\Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Stage.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Plant.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
