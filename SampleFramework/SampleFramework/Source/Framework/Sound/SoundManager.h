@@ -46,7 +46,7 @@ namespace Framework
     class SoundManager
     {
     public:
-        SoundManager(){}
+        SoundManager();
         virtual ~SoundManager(){}
 
         void Init();
@@ -63,10 +63,10 @@ namespace Framework
         SoundPlayer::State GetState(const char* tag);
 
     private:
-        ALCdevice *pDevice;
-        ALCcontext *pContext;
+        ALCdevice*      pDevice;
+        ALCcontext*     pContext;
 
-        SoundPlayer* pSoundPlayer[SOUNDPLAYER_NUM];
+        SoundPlayer*    pSoundPlayer[SOUNDPLAYER_NUM];
     };
 }
 

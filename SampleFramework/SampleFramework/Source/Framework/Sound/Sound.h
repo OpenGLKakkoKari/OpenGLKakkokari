@@ -23,8 +23,8 @@ namespace Framework
     class Sound
     {
     public:
-        Sound(){}
-        virtual ~Sound(){}
+        Sound();
+        virtual ~Sound();
 
         enum SoundFormat
         {
@@ -36,12 +36,12 @@ namespace Framework
 
         void Release();
 
-        char            FileName[MAX_PATH];
 
         int             format;
-        unsigned char*  pData;
         int             freq;
         int             size;
+        unsigned char*  pData;
+        char            FileName[MAX_PATH];
     };
 }
 

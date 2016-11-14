@@ -20,9 +20,8 @@
 
 namespace Framework
 {
-    class Bone
+    struct Bone
     {
-    public:
         int    sibling;         // 兄弟
         int    child;           // 子供
         int    parent;          // 親
@@ -30,6 +29,10 @@ namespace Framework
         Matrix offset;          // オフセット行列
         Matrix advOffset;       // ボーンオフセット行列
         char   name[256];
+
+        Bone() :
+            sibling(-1), child(-1), parent(-1)
+        {}
     };
 }
 

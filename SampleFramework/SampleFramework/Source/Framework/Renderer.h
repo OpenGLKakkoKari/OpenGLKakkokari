@@ -94,7 +94,7 @@ namespace Framework
 
         };
 
-        Renderer(){}
+        Renderer();
         virtual ~Renderer(){}
 
         virtual void Init(Windows::GameWindow *pWindow){}

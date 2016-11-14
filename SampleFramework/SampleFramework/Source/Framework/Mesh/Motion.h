@@ -27,11 +27,15 @@ namespace Framework
     public:
         enum
         {
-            NEUTRAL = 0,
-            WALKING,
-            JUMPING,
-            LANDING,
-            KICK,
+            NEUTRAL = 0,    // ニュートラル
+            WALKING,        // 歩き
+            JUMPING,        // ジャンプ
+            LANDING,        // 着地
+            MELEE,          // 格闘
+            SHOOTING,       // 射撃
+            SKILL,          // スキル
+            STUNNED,        // 気絶
+            STANDING,       // 起き上がり
 
             MOTION_MAX,
         };

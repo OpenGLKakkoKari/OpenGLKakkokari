@@ -11,6 +11,7 @@
 
 
 #include "SceneManager.h"
+#include "Scene.h"
 #include <stdio.h>
 #include <string.h>
 

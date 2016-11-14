@@ -24,7 +24,7 @@ using namespace Framework;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Polygon::Polygon()
+Polygon::Polygon() : texture_(NULL)
 {
     vtx[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
     vtx[0].nor = Vector3(0.0f, 0.0f, -1.0f);

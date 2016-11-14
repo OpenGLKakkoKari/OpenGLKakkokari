@@ -11,6 +11,7 @@
 
 
 #include "StateManager.h"
+#include "State.h"
 #include <stdio.h>
 #include <string.h>
 

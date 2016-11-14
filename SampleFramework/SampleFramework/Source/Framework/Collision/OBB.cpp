@@ -13,6 +13,8 @@
 #include "OBB.h"
 #include "..\Math\Matrix.h"
 #include "..\Math\Math.h"
+#include "..\Mesh\Mesh.h"
+#include "..\Mesh\Model.h"
 #include <math.h>
 
 
@@ -27,7 +29,7 @@ using namespace Framework::Math;
 @brief  コンストラクタ
 ******************************************************************************/
 
-OBB::OBB()
+OBB::OBB() : pBox(NULL)
 {
 }
 
@@ -37,11 +39,17 @@ OBB::OBB()
 
 OBB::~OBB()
 {
+    if (pBox)
+    {
+        delete pBox;
+        pBox = NULL;
+    }
 }
 
 /******************************************************************************
 @brief  OBB生成処理
 @param  pMesh           メッシュ
+@param  scale           大きさ
 @param  worldPos        座標
 @param  rot             回転
 @return OBB*            OBB情報へのポインタ
@@ -81,7 +89,45 @@ OBB* OBB::Create(Mesh *pMesh, Vector3 worldPos, Vector3 rot)
     pOBB->len.x = fabsf(max.x - min.x) * 0.5f;
     pOBB->len.y = fabsf(max.y - min.y) * 0.5f;
     pOBB->len.z = fabsf(max.z - min.z) * 0.5f;
+
+    // 描画用モデル作成
+    pOBB->pBox = Model::CreateBox(Vector3(pOBB->len.x * 2, pOBB->len.y * 2, pOBB->len.z * 2));
+    pOBB->pBox->SetRotation(Vector3(rot.x, rot.y, rot.z));
+    pOBB->pBox->pMesh->pMaterialList[0].diffuse = ColorValue(1.0f, 0.0f, 0.0f, 0.5f);
+    pOBB->pBox->SetType(DrawObject::TYPE_ALPHAMESH);
     
+    return pOBB;
+}
+OBB* OBB::Create(Vector3 scale, Vector3 worldPos, Vector3 rot)
+{
+    OBB *pOBB = new OBB;
+
+    //最大値、最小値の初期値設定
+    Vector3 min = Vector3(-scale.x / 2, -scale.y / 2, -scale.z / 2);
+    Vector3 max = Vector3(scale.x / 2, scale.y / 2, scale.z / 2);
+
+    //中心点取得
+    pOBB->pos = worldPos;
+
+    //方向ベクトル取得
+    Matrix rotMat;
+    Matrix::RotationYXZ(&rotMat, rot.x, rot.y, rot.z);
+    pOBB->dir[0] = Vector3(rotMat._11, rotMat._12, rotMat._13);
+    pOBB->dir[1] = Vector3(rotMat._21, rotMat._22, rotMat._23);
+    pOBB->dir[2] = Vector3(rotMat._31, rotMat._32, rotMat._33);
+
+    //長さ取得
+    pOBB->len.x = fabsf(max.x - min.x) * 0.5f;
+    pOBB->len.y = fabsf(max.y - min.y) * 0.5f;
+    pOBB->len.z = fabsf(max.z - min.z) * 0.5f;
+
+    // 描画用モデル作成
+    pOBB->pBox = Model::CreateBox(Vector3(pOBB->len.x * 2, pOBB->len.y * 2, pOBB->len.z * 2));
+    pOBB->pBox->SetPosition(Vector3(worldPos.x, worldPos.y, worldPos.z));
+    pOBB->pBox->SetRotation(Vector3(rot.x, rot.y, rot.z));
+    pOBB->pBox->pMesh->pMaterialList[0].diffuse = ColorValue(1.0f, 0.0f, 0.0f, 0.5f);
+    pOBB->pBox->SetType(DrawObject::TYPE_ALPHAMESH);
+
     return pOBB;
 }
 

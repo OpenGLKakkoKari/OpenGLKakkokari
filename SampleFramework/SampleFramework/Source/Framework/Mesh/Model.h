@@ -28,8 +28,10 @@ namespace Framework
         virtual ~Model();
 
         virtual void Draw();
+        virtual void SetTexture(int index, const char* fileName){ pMesh->SetTexture(index, fileName); }
 
         static Model* Load(const char *FileName);
+        static Model* CreateBox(const Vector3& scale);
 
         Mesh* pMesh;
     };

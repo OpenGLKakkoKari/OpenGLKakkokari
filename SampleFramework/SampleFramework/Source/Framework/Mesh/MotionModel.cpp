@@ -28,6 +28,9 @@ using Framework::File::TextReader;
 ******************************************************************************/
 
 MotionModel::MotionModel()
+    : modelNum(0), pModelList(NULL),
+    partsNum(0), pPartsModelList(NULL),
+    pMotionList(NULL), motionNum(NULL), activeMotionIndex(0)
 {
 }
 

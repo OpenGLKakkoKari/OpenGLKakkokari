@@ -37,13 +37,15 @@ Matrix          DrawObject::viewMatrix;
 
 DrawObject::DrawObject() :
 type(TYPE_MESH),
-priority(0)
+priority(0),
+pNext(NULL), pPrev(NULL)
 {
     RegisterList();
 }
 DrawObject::DrawObject(Type type) :
 type(type),
-priority(0)
+priority(0),
+pNext(NULL), pPrev(NULL)
 {
     RegisterList();
 }

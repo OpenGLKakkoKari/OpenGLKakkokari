@@ -39,7 +39,7 @@ namespace Framework
         virtual void Draw() = 0;
         static void DrawAll();
 
-        void    SetPriority(int priority)       { this->priority = priority; }
+        void SetPriority(int priority)       { this->priority = priority; }
         void SetType(Type newType);
 
     private:

@@ -28,7 +28,8 @@ using namespace Windows;
 @brief  コンストラクタ
 ******************************************************************************/
 
-DirectX::Renderer::Renderer()
+DirectX::Renderer::Renderer() 
+    : pD3D(NULL), pD3DDev(NULL), pTex(NULL)
 {
     type = DIRECTX9;
 }
@@ -154,6 +155,9 @@ void DirectX::Renderer::Init(GameWindow *pGameWindow)
     pD3DDev->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);   // アルファブレンディング処理
     pD3DDev->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);   // 最初のアルファ引数
     pD3DDev->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_CURRENT);   // ２番目のアルファ引数
+
+
+    //pD3DDev->SetRenderState(D3DRS_SRGBWRITEENABLE, TRUE);      // 拡大時双線形補間
 
 }
 

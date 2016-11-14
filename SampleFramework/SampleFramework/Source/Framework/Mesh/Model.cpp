@@ -14,8 +14,7 @@
 #include "..\Manager.h"
 
 
-using Framework::Model;
-using Framework::Manager;
+using namespace Framework;
 
 
 /*  実装
@@ -83,6 +82,22 @@ Model* Model::Load(const char *FileName)
 {
     Model* model = new Model;
     model->pMesh = Mesh::Load(FileName);
+    return model;
+}
+
+/******************************************************************************
+@brief  箱型モデル生成処理
+@param  scale           テクスチャのファイル名
+@param  FileName        テクスチャのファイル名
+@return Model*          モデル情報へのポインタ
+******************************************************************************/
+
+Model* Model::CreateBox(const Vector3& scale)
+{
+    Model* model = new Model;
+
+    model->pMesh = Mesh::CreateBox(scale);
+
     return model;
 }
 

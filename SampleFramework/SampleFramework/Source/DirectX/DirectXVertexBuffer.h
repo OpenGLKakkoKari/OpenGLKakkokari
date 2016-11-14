@@ -24,7 +24,7 @@ namespace DirectX
     class VertexBuffer : public Framework::VertexBuffer
     {
     public:
-        VertexBuffer(){}
+        VertexBuffer() : pVertexBuffer(NULL){}
         virtual ~VertexBuffer(){}
 
         Framework::Vertex* Lock()

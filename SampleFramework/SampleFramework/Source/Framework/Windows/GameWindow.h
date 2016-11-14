@@ -23,7 +23,7 @@ namespace Windows
     class GameWindow : public Window
     {
     public:
-        GameWindow(){}
+        GameWindow() : screen(false){}
         GameWindow(HINSTANCE hInst, const char* name, HWND hParent, Controller* ctrl){}
         virtual ~GameWindow(){}
 

@@ -28,7 +28,7 @@ public:
 
     bool  CheckToken(const char* cmpStr);
     bool  IsScriptEnd(){ return str[pos] == '\0'; }
-    void  Reset(){ pos = 0; }
+    void  Reset(){ pos = 0; token[0] = '\0'; }
 
 private:
     const char*     str;

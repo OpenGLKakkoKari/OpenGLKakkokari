@@ -34,9 +34,8 @@ namespace Windows
         int notify(int id, LPARAM lParam);
         int contextMenu(HWND handle, int x, int y);
 
-        static bool CALLBACK enumerateChildren(HWND childHandle, LPARAM lParam);
 
-    private:
+        static bool CALLBACK enumerateChildren(HWND childHandle, LPARAM lParam);
     };
 }
 

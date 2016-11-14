@@ -53,15 +53,18 @@ HWND Window::Create(HINSTANCE hInst, const char* name, HWND hParent, Controller*
     strcpy_s(this->title, MAX_STRING - 1, name);
     strcpy_s(this->className, MAX_STRING - 1, name);
 
-    winClass.cbSize = sizeof(WNDCLASSEX);
-    winClass.style = 0;
-    winClass.lpfnWndProc = Procedure;
-    winClass.cbClsExtra = 0;
-    winClass.cbWndExtra = 0;
-    winClass.hInstance = instance;
-    winClass.hCursor = LoadCursor(0, IDC_ARROW);
-    winClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-    winClass.lpszClassName = className;
+    winClass.cbSize         = sizeof(WNDCLASSEX);
+    winClass.style          = 0;
+    winClass.lpfnWndProc    = Procedure;
+    winClass.cbClsExtra     = 0;
+    winClass.cbWndExtra     = 0;
+    winClass.hInstance      = instance;
+    winClass.hIcon          = NULL;
+    winClass.hCursor        = LoadCursor(0, IDC_ARROW);
+    winClass.hbrBackground  = (HBRUSH)GetStockObject(WHITE_BRUSH);
+    winClass.lpszMenuName   = NULL;
+    winClass.lpszClassName  = className;
+    winClass.hIconSm        = NULL;
 
     if (!::RegisterClassEx(&winClass)) return 0;
     RECT rect = {0, 0, width, height};
