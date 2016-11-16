@@ -21,6 +21,7 @@
 
 namespace Framework
 {
+    class Model;
     class OBB
     {
     public:
@@ -34,8 +35,10 @@ namespace Framework
         Vector3 pos;        // 中心点の座標
         Vector3 dir[3];     // XYZ の各座標軸の傾きを表す方向ベクトル
         Vector3 len;        // OBB の各座標軸に沿った長さの半分（中心点から面までの長さ）
-    
+        Model*  pBox;       // 描画用
+
         static OBB* Create(Mesh* pMesh, Vector3 worldPos, Vector3 rot);
+        static OBB* Create(Vector3 scale, Vector3 worldPos, Vector3 rot);
         static bool CheckCollision(OBB *pA, OBB *pB);
         static void ResolveCollision(OBB *pA, OBB *pB);
         static void ResolveCollision(OBB *pA, OBB *pB, Vector3 posOld);

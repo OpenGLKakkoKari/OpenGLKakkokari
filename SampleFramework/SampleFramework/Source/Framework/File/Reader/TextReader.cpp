@@ -15,8 +15,10 @@
 #include "../File.h"
 #include "../../Error.h"
 #include "../../Math/Math.h"
+#include "../../Collision/OBB.h"
 #include "../../TokenAnalyzer.h"
-#include "../../../Game/MeshField.h"
+#include "../../../Game/Field.h"
+#include "../../../Game/Skybox.h"
 #include "../../../Game/Plant.h"
 
 using Framework::File::File;
@@ -287,8 +289,10 @@ Stage* TextReader::LoadStage(const char *FileName)
     pToken->SetSkipChars(" \t\n\r,;\"");
     pStage = new Stage;
 
+    int fieldCount = 0;
     int modelCount = 0;
     int plantCount = 0;
+    int obbCount = 0;
     
     /**
     * TXTファイル(ステージスクリプト)読み込み
@@ -297,9 +301,22 @@ Stage* TextReader::LoadStage(const char *FileName)
     */
 
     // ファイル解析 ////////////////////
-    while (!pToken->IsScriptEnd())
+    while (!pToken->IsScriptEnd() && !pToken->CheckToken("END_SCRIPT"))
     {
         pToken->GetToken();
+
+        // FIELDSET
+        if (pToken->CheckToken("FIELDSET"))
+        {
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken();
+            fieldCount++;
+        }
 
         // MODELSET
         if (pToken->CheckToken("MODELSET"))
@@ -319,24 +336,43 @@ Stage* TextReader::LoadStage(const char *FileName)
             pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
             pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
             pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
             pToken->GetToken();
             plantCount++;
         }
+
+        // OBBSET
+        if (pToken->CheckToken("OBBSET"))
+        {
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken(); pToken->GetToken(); pToken->GetToken();
+            pToken->GetToken();
+            obbCount++;
+        }
     }
 
+    pStage->fieldNum = fieldCount;
     pStage->modelNum = modelCount;
     pStage->plantNum = plantCount;
+    pStage->obbNum   = obbCount;
 
+    pStage->pFieldList = new Field*[fieldCount];
     pStage->pModelList = new Model*[modelCount];
     pStage->pPlantList = new Plant*[plantCount];
+    pStage->pOBBList   = new OBB*[obbCount];
 
+    fieldCount = 0;
     modelCount = 0;
     plantCount = 0;
+    obbCount   = 0;
 
     pToken->Reset();
 
     // ファイル解析 ////////////////////
-    while (!pToken->IsScriptEnd())
+    while (!pToken->IsScriptEnd() && !pToken->CheckToken("END_SCRIPT"))
     {
         pToken->GetToken();
 
@@ -344,12 +380,19 @@ Stage* TextReader::LoadStage(const char *FileName)
 // フィールド
 // 
 
-        if (pToken->CheckToken("FIELD"))
+        if (pToken->CheckToken("FIELDSET"))
         {
             pToken->GetToken();
             pToken->GetToken();
             char fileName[256];
             strcpy_s(fileName, 256, pToken->GetToken());
+
+            pToken->GetToken();
+            pToken->GetToken();
+            Vector3 fieldPos;
+            fieldPos.x = pToken->GetFloatToken();
+            fieldPos.y = pToken->GetFloatToken();
+            fieldPos.z = pToken->GetFloatToken();
 
             pToken->GetToken();
             pToken->GetToken();
@@ -366,23 +409,37 @@ Stage* TextReader::LoadStage(const char *FileName)
 
             File dataFile;
             int dataFileSize;
-            if (dataFile.Open(pToken->GetToken(), "r"))
+            if (dataFile.Open(pToken->GetToken(), "rb"))
             {
-                dataFileSize = file.GetSize();
+                dataFileSize = dataFile.GetSize();
 
                 // バッファにファイルデータを格納
-                float* pHeightMap = new float[dataFileSize / 4];
-                dataFile.Read(pHeightMap, dataFileSize, 1);
+                //float* pHeightMap = new float[dataFileSize / 4];
+                //dataFile.Read(pHeightMap, dataFileSize, 1);
                 dataFile.Close();
 
-                pStage->pMeshField = new MeshField(fileName, widthDiv, heightDiv, Vector2(size_x, size_y), pHeightMap);
-                delete pHeightMap;
+                pStage->pFieldList[fieldCount] = new Field(fileName, widthDiv, heightDiv, Vector2(size_x, size_y), NULL);
+                pStage->pFieldList[fieldCount]->SetPosition(fieldPos);
+                //delete pHeightMap;
+                fieldCount++;
             }
             else
             {
                 Error::Message("高さマップの読み込みに失敗しました。");
             }
 
+        }
+        
+//
+// スカイボックス
+// 
+
+        if (pToken->CheckToken("SKYBOX"))
+        {
+            pToken->GetToken();
+            pToken->GetToken();
+            pStage->pSkybox = Skybox::Create(pToken->GetToken());
+            pToken->GetToken();
         }
         
 //
@@ -438,6 +495,38 @@ Stage* TextReader::LoadStage(const char *FileName)
 
             pToken->GetToken();
             plantCount++;
+        }
+
+//
+// OBB
+// 
+
+        if (pToken->CheckToken("OBBSET"))
+        {
+            Vector3 obbPos, obbRot, obbScale;
+
+            pToken->GetToken();
+            pToken->GetToken();
+            obbPos.x = pToken->GetFloatToken();
+            obbPos.y = pToken->GetFloatToken();
+            obbPos.z = pToken->GetFloatToken();
+
+            pToken->GetToken();
+            pToken->GetToken();
+            obbRot.x = pToken->GetFloatToken();
+            obbRot.y = pToken->GetFloatToken();
+            obbRot.z = pToken->GetFloatToken();
+
+            pToken->GetToken();
+            pToken->GetToken();
+            obbScale.x = pToken->GetFloatToken();
+            obbScale.y = pToken->GetFloatToken();
+            obbScale.z = pToken->GetFloatToken();
+
+            pStage->pOBBList[obbCount] = OBB::Create(obbScale, obbPos, obbRot);
+
+            pToken->GetToken();
+            obbCount++;
         }
     }
 

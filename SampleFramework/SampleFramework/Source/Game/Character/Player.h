@@ -30,12 +30,6 @@ namespace Game
         void Init(){}
         void Uninit(){}
         void Update();
-
-
-    private:
-        bool                      play;
-        bool                      onGround;
-        bool                      action;
     };
 }
 

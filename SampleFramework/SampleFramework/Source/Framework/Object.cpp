@@ -27,6 +27,7 @@ Object::Object() :
 pos_(Vector3(0.0f, 0.0f, 0.0f)),
 rot_(Vector3(0.0f, 0.0f, 0.0f)),
 scale_(Vector3(1.0f, 1.0f, 1.0f)),
+parent_(NULL),
 isUsed_(true)
 {
 }

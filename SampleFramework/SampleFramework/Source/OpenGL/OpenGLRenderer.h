@@ -27,6 +27,8 @@ namespace OpenGL
     class Renderer : public Framework::Renderer
     {
     public:
+        enum { LIGHT_MAX = 8 };
+
         Renderer();
         virtual ~Renderer();
 
@@ -81,7 +83,7 @@ namespace OpenGL
         HGLRC glrc;                 // GLレンダリングコンテキスト
         HDC hDC;                    // デバイスコンテキスト
 
-        Framework::Light*       pLight[8];
+        Framework::Light*       pLight[LIGHT_MAX];
     };
 }
 

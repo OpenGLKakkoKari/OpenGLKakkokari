@@ -23,6 +23,14 @@ using namespace Framework::Math;
 ******************************************************************************/
 
 /******************************************************************************
+@brief  コンストラクタ
+******************************************************************************/
+
+Renderer::Renderer() : pCamera(NULL), pVertexBuffer(NULL), pIndexBuffer(NULL)
+{
+}
+
+/******************************************************************************
 @brief  カメラ2D・3D切り替え
 @param  isEnabled   3D表示の場合true 2D表示の場合false
 ******************************************************************************/
@@ -32,7 +40,7 @@ void Renderer::SetTranslationMode(bool isEnabled)
     if (isEnabled)
     {
         Matrix::SetLookAtLH(&ViewMatrix, &pCamera->Eye, &pCamera->At, &pCamera->Up);
-        Matrix::SetPerspectiveFovLH(&ProjectionMatrix, Math::ToRad(45.0f), (float)Manager::GetWindow()->GetWidth(), (float)Manager::GetWindow()->GetHeight(), 10.0f, 12000.0f);
+        Matrix::SetPerspectiveFovLH(&ProjectionMatrix, Math::ToRad(45.0f), (float)Manager::GetWindow()->GetWidth(), (float)Manager::GetWindow()->GetHeight(), 100.0f, 11000.0f);
     }
     else
     {

@@ -15,7 +15,8 @@
 #include "Mesh/Model.h"
 #include "../Framework/Manager.h"
 #include "../Game/GameScene.h"
-#include "../Game/MeshField.h"
+#include "../Game/Field.h"
+#include "../Game/Skybox.h"
 #include "../Game/Plant.h"
 
 
@@ -30,7 +31,10 @@ using namespace Game;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Stage::Stage()
+Stage::Stage() 
+    : fieldNum(0), modelNum(0), plantNum(0), obbNum(0),
+    pSkybox(NULL), pFieldList(NULL), pModelList(NULL),
+    pPlantList(NULL), pOBBList(NULL)
 {
 }
 
@@ -40,15 +44,35 @@ Stage::Stage()
 
 Stage::~Stage()
 {
-    SAFE_DELETE(pMeshField);
+    SAFE_UNINIT(pSkybox);
 
-    for (int i = 0; i < modelNum; i++)
-        SAFE_DELETE(pModelList[i]);
-    delete[] pModelList;
+    if (fieldNum > 0)
+    {
+        for (int i = 0; i < fieldNum; i++)
+            SAFE_DELETE(pFieldList[i]);
+        delete[] pFieldList;
+    }
 
-    for (int i = 0; i < plantNum; i++)
-        SAFE_DELETE(pPlantList[i]);
-    delete[] pPlantList;
+    if (modelNum > 0)
+    {
+        for (int i = 0; i < modelNum; i++)
+            SAFE_DELETE(pModelList[i]);
+        delete[] pModelList;
+    }
+
+    if (plantNum > 0)
+    {
+        for (int i = 0; i < plantNum; i++)
+            SAFE_DELETE(pPlantList[i]);
+        delete[] pPlantList;
+    }
+
+    if (obbNum > 0)
+    {
+        for (int i = 0; i < obbNum; i++)
+            SAFE_DELETE(pOBBList[i]);
+        delete[] pOBBList;
+    }
 }
 
 /******************************************************************************
@@ -57,6 +81,7 @@ Stage::~Stage()
 
 void Stage::Update(void)
 {
+    pSkybox->Update();
 }
 
 /******************************** 実装ここまで *******************************/

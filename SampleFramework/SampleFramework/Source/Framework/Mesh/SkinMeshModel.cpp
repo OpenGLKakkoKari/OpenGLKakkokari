@@ -28,6 +28,11 @@ using namespace Framework::File;
 ******************************************************************************/
 
 SkinMeshModel::SkinMeshModel()
+    : boneNum(0), pBoneList(NULL),
+    pBoneIndexList(NULL), pWeightList(NULL),
+    pMotionList(NULL), motionNum(0),
+    activeMotionIndex(0), pVertexList(NULL),
+    pCalcMatrix(NULL)
 {
 }
 
@@ -56,7 +61,6 @@ SkinMeshModel::~SkinMeshModel()
         delete[] pMotionList[i].keyframeList;
     }
     delete[] pMotionList;
-
 
     delete[] pCalcMatrix;
 }

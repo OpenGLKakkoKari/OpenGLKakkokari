@@ -11,7 +11,7 @@
 ******************************************************************************/
 
 
-#include "..\..\Framework\State.h"
+#include "CharacterState.h"
 
 
 /*  ƒNƒ‰ƒX’è‹`
@@ -20,10 +20,10 @@
 
 namespace Game
 {
-    class CharacterStateNeutral : public Framework::State
+    class CharacterStateNeutral : public CharacterState
     {
     public:
-        CharacterStateNeutral();
+        CharacterStateNeutral(Character* pOwner);
         virtual ~CharacterStateNeutral();
 
         virtual void Init();

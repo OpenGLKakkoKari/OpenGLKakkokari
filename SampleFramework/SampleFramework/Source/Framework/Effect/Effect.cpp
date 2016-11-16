@@ -27,7 +27,7 @@ using namespace Framework;
 Effect::Effect() : 
 startTime(0), endTime(120), timer(0),
 isPlaying(false), isLoop(false),
-emitterNum(0)
+emitterNum(0), pEmitterList(NULL)
 {
 }
 

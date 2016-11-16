@@ -24,6 +24,7 @@ namespace Framework
     class SoundPlayer
     {
     public:
+        enum { TAG_MAX = 64 };
         enum State
         {
             SOUND_PLAYING,
@@ -53,7 +54,7 @@ namespace Framework
         unsigned int    buffer;
         unsigned int    source;
         Sound           sound;
-        char            tag[64];
+        char            tag[TAG_MAX];
         bool            use;
 
         Vector3         ListenerPos;

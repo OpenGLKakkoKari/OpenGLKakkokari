@@ -32,10 +32,12 @@ namespace Framework
         
         static SkinMeshModel* Load(const char *FileName);
 
-        void SetMotion(int index) { activeMotionIndex = index; }
-        void SetFrame(int frame)  { pMotionList[activeMotionIndex].SetFrame(frame); }
-        void NextFrame(int addFrameCnt = 1){ pMotionList[activeMotionIndex].NextFrame(addFrameCnt); }
-        void SetLoop(bool flag){ pMotionList[activeMotionIndex].loop = flag; }
+        void SetMotion(int index)           { activeMotionIndex = index; SetFrame(0); }
+        void SetFrame(int frame)            { pMotionList[activeMotionIndex].SetFrame(frame); }
+        void NextFrame(int addFrameCnt = 1) { pMotionList[activeMotionIndex].NextFrame(addFrameCnt); }
+        bool IsMotionEnd(int index)         { return pMotionList[index].frame >= pMotionList[index].frameMax - 1; }
+        void SetLoop(bool flag)             { pMotionList[activeMotionIndex].loop = flag; }
+
 
         int     boneNum;                // ボーン行列総数
         Bone*   pBoneList;              // ボーンリスト
@@ -48,7 +50,7 @@ namespace Framework
         int     activeMotionIndex;      // 現在のモーション
 
         Vertex* pVertexList;            // 元モデルの頂点リスト
-        Matrix *pCalcMatrix;            // 座標変換行列と逆BOf行列を掛け算したもの
+        Matrix* pCalcMatrix;            // 座標変換行列と逆BOf行列を掛け算したもの
 
 
     protected:

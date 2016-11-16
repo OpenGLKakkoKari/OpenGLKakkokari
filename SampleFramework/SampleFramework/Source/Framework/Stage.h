@@ -20,7 +20,8 @@
 
 namespace Game
 {
-    class MeshField;
+    class Field;
+    class Skybox;
     class Plant;
 }
 namespace Framework
@@ -37,11 +38,13 @@ namespace Framework
         void Uninit(){}
         void Update();
 
+        int fieldNum;
         int modelNum;
         int plantNum;
         int obbNum;
-        
-        Game::MeshField*    pMeshField;
+
+        Game::Skybox*       pSkybox;
+        Game::Field**       pFieldList;
         Model**             pModelList;
         Game::Plant**       pPlantList;
         OBB**               pOBBList;

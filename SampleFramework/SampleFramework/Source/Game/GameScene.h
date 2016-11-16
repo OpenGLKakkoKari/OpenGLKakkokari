@@ -26,11 +26,13 @@ namespace Framework
     class Model;
     class Effect;
     class Stage;
+    class OBB;
 }
 namespace Game
 {
     class GameCamera;
     class Character;
+    class MeshField;
     class GameScene : public Framework::Scene
     {
     public:
@@ -49,9 +51,12 @@ namespace Game
     private:
         static GameCamera*              pCamera;
         static Character**              pCharacter;
+        static MeshField*              pMeshField;
         static Framework::Stage*        pStage;
         static Framework::Sprite*       pBackground;
         static Framework::Polygon*      pPolygon;
+        static Framework::Model*        pModel;
+        static Framework::OBB*          pOBB;
         static Framework::Effect*       pEffect;
     };
 }

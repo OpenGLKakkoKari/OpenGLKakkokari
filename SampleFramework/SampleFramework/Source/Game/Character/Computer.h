@@ -30,7 +30,6 @@ namespace Game
         void Init(){}
         void Uninit(){}
         void Update();
-
     };
 }
 

@@ -25,7 +25,7 @@ using namespace Framework;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Billboard::Billboard()
+Billboard::Billboard() : type(BILLBOARD_DEFAULT)
 {
 }
 

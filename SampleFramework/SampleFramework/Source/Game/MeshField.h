@@ -32,7 +32,6 @@ namespace Game
             float* pHeightMap);
         virtual ~MeshField();
 
-        void Update();
         void Draw();
 
     private:

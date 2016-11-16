@@ -70,20 +70,20 @@ void Joystick::Update()
 // 現在のボタンの情報を取得
 // 
 
-    bool newState[BUTTON_MAX];
+    BYTE newState[BUTTON_MAX];
 
     // 十字キー以外
     for (int i = 0; i < BUTTON_EXCEPT_AXIS_MAX; i++)
     {
         int mask = 0x00000000 | 0x00000001 << i;
-        newState[i] = (bool)((newInfo.dwButtons & mask) >> i);
+        newState[i] = static_cast<BYTE>((newInfo.dwButtons & mask) >> i);
     }
 
     // 十字キー
-    newState[BUTTON_UP]     = (newInfo.dwYpos > THRESHOLD_MAX) ? (true) : (false);
-    newState[BUTTON_DOWN]   = (newInfo.dwYpos < THRESHOLD_MIN) ? (true) : (false);
-    newState[BUTTON_LEFT]   = (newInfo.dwXpos > THRESHOLD_MAX) ? (true) : (false);
-    newState[BUTTON_RIGHT]  = (newInfo.dwXpos < THRESHOLD_MIN) ? (true) : (false);
+    newState[BUTTON_UP]     = (newInfo.dwYpos > THRESHOLD_MAX) ? (0x01) : (0x00);
+    newState[BUTTON_DOWN]   = (newInfo.dwYpos < THRESHOLD_MIN) ? (0x01) : (0x00);
+    newState[BUTTON_LEFT]   = (newInfo.dwXpos > THRESHOLD_MAX) ? (0x01) : (0x00);
+    newState[BUTTON_RIGHT]  = (newInfo.dwXpos < THRESHOLD_MIN) ? (0x01) : (0x00);
     
 // 
 // プレス、トリガー、リピート
@@ -96,7 +96,7 @@ void Joystick::Update()
         release[i] = (press[i])  & (~newState[i]);
 
         // リピート
-        if (newState[i])
+        if (newState[i] & 0x01)
         {
             repeatCnt[i]--;
             if (repeatCnt[i] <= 0)

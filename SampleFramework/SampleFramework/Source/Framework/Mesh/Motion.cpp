@@ -28,7 +28,7 @@ using namespace Framework::Math;
 ******************************************************************************/
 
 Motion::Motion() : 
-frame(0), loop(false), keyframeNum(0), keyframeList(0), frameMax(0)
+frame(0), loop(false), keyframeNum(0), frameMax(0), keyframeList(0)
 {
 }
 

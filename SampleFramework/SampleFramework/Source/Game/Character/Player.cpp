@@ -11,9 +11,10 @@
 
 
 #include "Player.h"
+#include "CharacterStateManager.h"
+#include "CharacterStateNeutral.h"
 #include "../GameCamera.h"
 #include "../../Framework/Manager.h"
-#include "../../Framework/StateManager.h"
 #include "../../Framework/Collision/OBB.h"
 #include "../../Framework/Math/Math.h"
 #include "../../Framework/Mesh/SkinMeshModel.h"
@@ -39,9 +40,11 @@ using namespace Framework::Math;
 
 Player::Player()
 {
-    pSkinMeshModel = SkinMeshModel::Load("data/MODEL/jk_master3.model");
-    pSkinMeshModel->SetMotion(1);
-    pOBB = OBB::Create(pSkinMeshModel->pMesh, pos_, rot_);
+    pSkinMeshModel_ = SkinMeshModel::Load("data/MODEL/jk_master3.model");
+    pSkinMeshModel_->SetMotion(1);
+    pOBB_ = OBB::Create(pSkinMeshModel_->pMesh, pos_, rot_);
+    pState_ = new CharacterStateManager;
+    pState_->SetState(new CharacterStateNeutral(this));
 
     pos_.x = 0.0f;
     pos_.y = 50.0f;
@@ -55,23 +58,23 @@ Player::Player()
     traIner = Vector3(0.1f, 0.1f, 0.1f);
     rotIner = Vector3(0.9f, 0.9f, 0.9f);
 
-    pSkinMeshModel->pMotionList[Motion::NEUTRAL].loop = true;
-    pSkinMeshModel->pMotionList[Motion::WALKING].loop = true;
-    pSkinMeshModel->pMotionList[Motion::JUMPING].loop = false;
-    pSkinMeshModel->pMotionList[Motion::LANDING].loop = false;
-    pSkinMeshModel->pMotionList[Motion::KICK].loop = false;
+    pSkinMeshModel_->pMotionList[Motion::NEUTRAL].loop = true;
+    pSkinMeshModel_->pMotionList[Motion::WALKING].loop = true;
+    pSkinMeshModel_->pMotionList[Motion::JUMPING].loop = false;
+    pSkinMeshModel_->pMotionList[Motion::LANDING].loop = false;
+    pSkinMeshModel_->pMotionList[Motion::MELEE].loop = false;
 
-    pSkinMeshModel->SetMotion(Motion::NEUTRAL);
-    pSkinMeshModel->SetFrame(0);
-    pSkinMeshModel->SetPosition(pos_);
-    pSkinMeshModel->SetRotation(rot_);
-    pSkinMeshModel->SetScale(scale_);
-    pSkinMeshModel->Update();
+    pSkinMeshModel_->SetMotion(Motion::NEUTRAL);
+    pSkinMeshModel_->SetFrame(0);
+    pSkinMeshModel_->SetPosition(pos_);
+    pSkinMeshModel_->SetRotation(rot_);
+    pSkinMeshModel_->SetScale(scale_);
+    pSkinMeshModel_->Update();
 
     // トゥイーカに登録
     Manager::GetDebug()->Add("Game/Player");
     Manager::GetDebug()->SetDirectory("Game/Player");
-    Manager::GetDebug()->Add("pos", &pSkinMeshModel->pos_);
+    Manager::GetDebug()->Add("pos", &pSkinMeshModel_->pos_);
     //Manager::GetDebug()->Add("OBBdir", &pOBB->len);
     //Manager::GetDebug()->Add("ModelNum", &pSkinMeshModel->ModelNum);
     //Manager::GetDebug()->Add("MotionNum", &pSkinMeshModel->MotionNum);
@@ -86,6 +89,7 @@ Player::Player()
 
 Player::~Player()
 {
+    SAFE_DELETE(pState_)
 }
 
 /******************************************************************************
@@ -95,87 +99,16 @@ Player::~Player()
 void Player::Update(void)
 {
     Vector3 cameraRot = GameScene::GetCamera()->GetRotation();
-    static bool onGOld = false;
-    float unit = 1.0f;
-
-
-
-    // 接地しているかどうか
-    if (pos_.y <= 0.0f)
-        onGround = true;
-    else
-        onGround = false;
-
-    // 重力
-    traVec.y -= 0.5f;
-
-    if (pState)
+    float unit = 5.0f;
+    if (Manager::GetKeyboard()->Press('Q'))
     {
-        pState->Update();
+        unit = 1.0f;
     }
 
-    // キック
-    if (onGround && Manager::GetKeyboard()->Trigger(VK_RETURN) && !action)
+    if (pState_)
     {
-        action = true;
-        pSkinMeshModel->SetMotion(Motion::KICK);
-        pSkinMeshModel->SetFrame(0);
+        pState_->Update();
     }
-    if (pSkinMeshModel->activeMotionIndex == Motion::KICK &&
-        pSkinMeshModel->pMotionList[Motion::KICK].frame >= pSkinMeshModel->pMotionList[Motion::KICK].frameMax - 1)
-    {
-        action = false;
-        pSkinMeshModel->SetMotion(Motion::NEUTRAL);
-        pSkinMeshModel->SetFrame(0);
-    }
-    if (!action)
-    {
-        // 着地したかどうか
-        if (onGround && !onGOld)
-        {
-            pSkinMeshModel->SetMotion(Motion::LANDING);
-            pSkinMeshModel->SetFrame(0);
-        }
-        // ジャンプ
-        else if (onGround && Manager::GetKeyboard()->Press(VK_SPACE))
-        {
-            traVec.y += 20.0f;
-            pSkinMeshModel->SetMotion(Motion::JUMPING);
-            pSkinMeshModel->SetFrame(0);
-        }
-        // 歩き
-        else if ((Manager::GetKeyboard()->Press('W') ||
-            Manager::GetKeyboard()->Press('S') ||
-            Manager::GetKeyboard()->Press('A') ||
-            Manager::GetKeyboard()->Press('D')) &&
-            pSkinMeshModel->activeMotionIndex != Motion::JUMPING
-            )
-        {
-            if (pSkinMeshModel->activeMotionIndex == Motion::NEUTRAL)
-            {
-                pSkinMeshModel->SetMotion(Motion::WALKING);
-                pSkinMeshModel->SetFrame(0);
-            }
-            else
-            {
-                pSkinMeshModel->SetMotion(Motion::WALKING);
-            }
-        }
-        // 着地が終わったらニュートラル
-        else if (pSkinMeshModel->activeMotionIndex == Motion::LANDING &&
-                 pSkinMeshModel->pMotionList[Motion::LANDING].frame >= pSkinMeshModel->pMotionList[Motion::LANDING].frameMax - 1)
-        {
-            pSkinMeshModel->SetMotion(Motion::NEUTRAL);
-        }
-
-        // ニュートラル
-        else if (pSkinMeshModel->activeMotionIndex != Motion::LANDING && pSkinMeshModel->activeMotionIndex != Motion::JUMPING)
-        {
-            pSkinMeshModel->SetMotion(Motion::NEUTRAL);
-        }
-
-    }
-
 
     if (Manager::GetKeyboard()->Press('A') &&
         Manager::GetKeyboard()->Press('W'))
@@ -231,7 +164,6 @@ void Player::Update(void)
     pos_.z += traVec.z;
 
     traVec.x += -traVec.x * traIner.x;
-    //traVec.y += -traVec.y * traIner.y;
     traVec.z += -traVec.z * traIner.z;
 
     rotVec.y = rotAim.y - rot_.y;
@@ -249,50 +181,33 @@ void Player::Update(void)
     if (pos_.y <= 0.0f)
     {
         traVec.y = 0.0f;
-        pos_.y = 0.0f;
     }
-    if (pos_.x < -3000.0f)
-        pos_.x = -3000.0f;
-    if (pos_.x > 3000.0f)
-        pos_.x = 3000.0f;
-    if (pos_.z < -3000.0f)
-        pos_.z = -3000.0f;
-    if (pos_.z > 3000.0f)
-        pos_.z = 3000.0f;
+    pos_ = Vector3(
+        Range<float>::Clamp(pos_.x, -3000.0f, 3000.0f),
+        Range<float>::Clamp(pos_.y,     0.0f, 3000.0f),
+        Range<float>::Clamp(pos_.z, -3000.0f, 3000.0f)
+        );
 
-    // 角度を範囲内に収める
-    if (rot_.y > _PI)
-    {      
-        rot_.y -= _PI * 2;
-    }      
-    if (rot_.y < -_PI)
-    {      
-        rot_.y += _PI * 2;
-    }
-    if (rotAim.y > _PI)
-    {
-        rotAim.y -= _PI * 2;
-    }
-    if (rotAim.y < -_PI)
-    {
-        rotAim.y += _PI * 2;
-    }
+    NormalizeRadian(&rot_.y);
+    NormalizeRadian(&rotAim.y);
 
-    pSkinMeshModel->SetPosition(pos_);
-    pSkinMeshModel->SetRotation(rot_);
-    pSkinMeshModel->SetScale(scale_);
+    // モデルの更新
 
-    pSkinMeshModel->NextFrame();
-    pSkinMeshModel->Update();
+    pSkinMeshModel_->SetPosition(pos_);
+    pSkinMeshModel_->SetRotation(rot_);
+    pSkinMeshModel_->SetScale(scale_);
 
-    onGOld = onGround;
+    pSkinMeshModel_->NextFrame();
+    pSkinMeshModel_->Update();
 
     // OBBの更新
-    pOBB->pos = pos_;
-    pOBB->UpdateLength(pSkinMeshModel->pMesh->pVertex, pSkinMeshModel->pMesh->vertexNum);
+    pOBB_->UpdateLength(pSkinMeshModel_->pMesh->pVertex, pSkinMeshModel_->pMesh->vertexNum);
+    pOBB_->pos = pos_;
+    pOBB_->pBox->SetPosition(pos_);
+    pOBB_->pBox->SetRotation(rot_);
 
-    Manager::GetDebug()->Print("ActiveMotionIndex : %d\n", pSkinMeshModel->activeMotionIndex);
-    Manager::GetDebug()->Print("frame : %d\n", pSkinMeshModel->pMotionList[pSkinMeshModel->activeMotionIndex].frame);
+    Manager::GetDebug()->Print("ActiveMotionIndex : %d\n", pSkinMeshModel_->activeMotionIndex);
+    Manager::GetDebug()->Print("frame : %d\n", pSkinMeshModel_->pMotionList[pSkinMeshModel_->activeMotionIndex].frame);
     //Manager::GetDebug()->Print("frameMax : %d\n", pSkinMeshModel->MotionList[pSkinMeshModel->ActiveMotionIndex].frameMax);
 }
 

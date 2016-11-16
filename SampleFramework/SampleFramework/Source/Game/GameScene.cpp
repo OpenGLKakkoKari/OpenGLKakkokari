@@ -22,6 +22,7 @@
 #include "../Framework/File/Reader/TextReader.h"
 #include "../Framework/Math/Random.h"
 #include "../Framework/Math/Math.h"
+#include "../Framework/Collision/OBB.h"
 #include "../Framework/Sprite.h"
 #include "../Framework/Effect/Effect.h"
 
@@ -38,9 +39,12 @@ using namespace Math;
 
 GameCamera*                 Game::GameScene::pCamera;
 Character**                 Game::GameScene::pCharacter;
+MeshField*                  Game::GameScene::pMeshField;
 Framework::Stage*           Game::GameScene::pStage;
 Framework::Sprite*          Game::GameScene::pBackground;
 Framework::Polygon*         Game::GameScene::pPolygon;
+Framework::Model*           Game::GameScene::pModel;
+Framework::OBB*             Game::GameScene::pOBB;
 Framework::Effect*          Game::GameScene::pEffect;
 
 
@@ -53,6 +57,7 @@ Framework::Effect*          Game::GameScene::pEffect;
 
 GameScene::GameScene()
 {
+    Manager::GetDebug()->Add("Game");
 }
 
 /******************************************************************************
@@ -61,6 +66,7 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
+    Manager::GetDebug()->Delete("Game");
 }
 
 /******************************************************************************
@@ -77,29 +83,37 @@ void GameScene::Init(void)
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
 
+    //pMeshField = new MeshField("data/TEXTURE/Field/asphalt001.jpg", 2048, 2048, Vector2(10000.0f, 10000.0f), NULL);
 
     pCharacter = new Character*[CHARACTER_MAX];
     pCharacter[0] = new Player;
     pCharacter[1] = new Computer;
 
-    pBackground = Sprite::Create(
-        // 座標
-        Vector2((float)Manager::GetWindow()->GetWidth() / 16 * 8, (float)Manager::GetWindow()->GetHeight() / 16),
-        // 大きさ
-        Vector2((float)Manager::GetWindow()->GetWidth() / 4, (float)Manager::GetWindow()->GetHeight() / 8),
-        // 色
-        Color(255, 255, 255, 255),
-        // テクスチャファイル名
-        "data/TEXTURE/Game/score_logo.png");
+    //pBackground = Sprite::Create(
+    //    // 座標
+    //    Vector2((float)Manager::GetWindow()->GetWidth() / 16 * 8, (float)Manager::GetWindow()->GetHeight() / 16),
+    //    // 大きさ
+    //    Vector2((float)Manager::GetWindow()->GetWidth() / 4, (float)Manager::GetWindow()->GetHeight() / 8),
+    //    // 色
+    //    Color(255, 255, 255, 255),
+    //    // テクスチャファイル名
+    //    "data/TEXTURE/Field/skydome000.bmp");
 
-    pPolygon = Polygon::Create(
-        Vector3(0.0f, 0.0f, -50.0f),
-        Vector2(100.0f, 100.0f),
-        Color(255, 0, 0, 255),
-        // テクスチャファイル名
-        "data/TEXTURE/Game/score_logo.png");
-    
-    pPolygon->SetType(DrawObject::TYPE_ALPHAMESH);
+    //pPolygon = Polygon::Create(
+    //    Vector3(0.0f, 0.0f, -50.0f),
+    //    Vector2(100.0f, 100.0f),
+    //    Color(255, 0, 0, 255),
+    //    // テクスチャファイル名
+    //    "data/TEXTURE/Game/score_logo.png");
+
+    //pPolygon->SetType(DrawObject::TYPE_ALPHAMESH);
+
+    //pModel = Model::Load("data/MODEL/skydome.x");
+    //pModel->SetPosition(Vector3(100.0f, 0.0f, 100.0f));
+    pModel = Model::CreateBox(Vector3(200.0f, 200.0f, 200.0f));
+    pModel->SetUse(false);
+
+    pOBB = OBB::Create(pModel->pMesh, Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 0.0f, 0.0f));
 
     pEffect = EffectReader::LoadEffect("data/EFFECT/explosion.effect");
     pEffect->Pause();
@@ -107,7 +121,6 @@ void GameScene::Init(void)
     pEffect->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
 
 
-    Manager::GetDebug()->Add("Game");
 }
 
 /******************************************************************************
@@ -127,9 +140,10 @@ void GameScene::Uninit(void)
     SAFE_DELETE(pStage);
     SAFE_DELETE(pBackground);
     SAFE_DELETE(pPolygon);
+    SAFE_DELETE(pModel);
+    SAFE_DELETE(pOBB);
     SAFE_DELETE(pEffect);
     Manager::GetSound()->Stop();
-    Manager::GetDebug()->Delete("Game");
 }
 
 /******************************************************************************
@@ -148,6 +162,34 @@ void GameScene::Update(void)
     {
         pEffect->Play();
     }
+
+    if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_0))
+    {
+        Manager::GetSound()->Play("SE1");
+    }
+    if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_1))
+    {
+        Manager::GetSound()->Play("SE2");
+    }
+    if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_2))
+    {
+        Manager::GetSound()->Play("SE3");
+    }
+    if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_3))
+    {
+        Manager::GetSound()->Play("SE4");
+    }
+    if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_4))
+    {
+        Manager::GetSound()->Play("SE5");
+    }
+
+    if (OBB::CheckCollision(pCharacter[0]->pOBB_, pOBB))
+    {
+        OBB::ResolveCollision(pCharacter[0]->pOBB_, pOBB);
+    }
+    pCharacter[0]->SetPosition(pCharacter[0]->pOBB_->pos);
+
 }
 
 /******************************** 実装ここまで *******************************/

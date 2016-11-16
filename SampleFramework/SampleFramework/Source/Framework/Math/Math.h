@@ -62,6 +62,21 @@ namespace Framework
             }
         };
         
+        // 角度の正規化
+        inline void NormalizeRadian(float* rad)
+        {
+            float d;
+
+            if (*rad > 0.0f)
+                d = -_PI * 2;
+            else
+                d = _PI * 2;
+
+            // ラジアンを正規化
+            while (!(0.0f <= *rad && *rad < _PI * 2))
+                *rad += d;
+        }
+        
 
 //
 // 補間時に使用する割合算出関数

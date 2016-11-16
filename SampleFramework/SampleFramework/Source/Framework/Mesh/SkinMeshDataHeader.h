@@ -22,6 +22,11 @@ namespace Framework
         int boneNum;            // ボーン数
         int motionNum;          // モーション数
         int indexNum;           // インデックス数
+
+        SkinMeshDataHeader() : 
+            faceNum(0), vertexNum(0), materialNum(0), subsetNum(0),
+            boneNum(0), motionNum(0), indexNum(0)
+        {}
     };
 }
 

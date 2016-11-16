@@ -36,8 +36,11 @@ namespace Framework
         Mesh();
         virtual ~Mesh();
 
-        static Mesh* Load(const char *FileName);
         void Release();
+        void SetTexture(int index, const char* FileName)   { pMaterialList[index].pTexture = Texture::Load(FileName); }
+
+        static Mesh* Load(const char *FileName);
+        static Mesh* CreateBox(const Vector3& scale);
 
         unsigned int    faceNum;
         unsigned int    vertexNum;

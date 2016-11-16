@@ -38,27 +38,21 @@ using namespace Framework::Math;
 
 Computer::Computer()
 {
-    pSkinMeshModel = SkinMeshModel::Load("data/MODEL/jk_master3.model");
-    pSkinMeshModel->SetMotion(Motion::WALKING);
+    pSkinMeshModel_ = SkinMeshModel::Load("data/MODEL/jk_master3.model");
+    pSkinMeshModel_->SetMotion(Motion::WALKING);
 
     pos_ = Vector3(0.0f, 0.0f, 0.0f);
 
-    pSkinMeshModel->SetFrame(0);
-    pSkinMeshModel->SetPosition(pos_);
-    pSkinMeshModel->SetRotation(rot_);
-    pSkinMeshModel->SetScale(scale_);
-    pSkinMeshModel->Update();
+    pSkinMeshModel_->SetFrame(0);
+    pSkinMeshModel_->SetPosition(pos_);
+    pSkinMeshModel_->SetRotation(rot_);
+    pSkinMeshModel_->SetScale(scale_);
+    pSkinMeshModel_->Update();
 
     // ƒgƒDƒC[ƒJ‚É“o˜^
     Manager::GetDebug()->Add("Game/Computer");
     Manager::GetDebug()->SetDirectory("Game/Computer");
-    Manager::GetDebug()->Add("pos", &pSkinMeshModel->pos_);
-    //Manager::GetDebug()->Add("OBBdir", &pOBB->len);
-    //Manager::GetDebug()->Add("ModelNum", &pSkinMeshModel->ModelNum);
-    //Manager::GetDebug()->Add("MotionNum", &pSkinMeshModel->MotionNum);
-    //Manager::GetDebug()->Add("PartsNum", &pSkinMeshModel->PartsNum);
-    //Manager::GetDebug()->Add("ActiveMotionIndex", &pSkinMeshModel->ActiveMotionIndex);
-
+    Manager::GetDebug()->Add("pos", &pSkinMeshModel_->pos_);
 }
 
 /******************************************************************************
@@ -77,9 +71,9 @@ void Computer::Update(void)
 {
     pos_.z -= 0.1f;
 
-    pSkinMeshModel->SetPosition(pos_);
-    pSkinMeshModel->SetRotation(rot_);
-    pSkinMeshModel->SetScale(scale_);
+    pSkinMeshModel_->SetPosition(pos_);
+    pSkinMeshModel_->SetRotation(rot_);
+    pSkinMeshModel_->SetScale(scale_);
 
     //pSkinMeshModel->NextFrame();
     //pSkinMeshModel->Update();

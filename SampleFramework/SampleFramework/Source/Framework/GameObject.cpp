@@ -34,6 +34,7 @@ int             GameObject::allObjectNum;
 ******************************************************************************/
 
 GameObject::GameObject()
+    : pPrev(NULL), pNext(NULL)
 {
     RegisterList();
 }

@@ -25,7 +25,7 @@ namespace Framework
         class File
         {
         public:
-            File() : fp(nullptr){}
+            File() : fp(NULL){}
             File(const char *FilePath, const char *Mode);
             ~File();
 

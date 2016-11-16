@@ -13,6 +13,8 @@
 #include "Character.h"
 #include "../../Framework/Manager.h"
 #include "../../Framework/Mesh/SkinMeshModel.h"
+#include "../../Framework/Collision/OBB.h"
+#include "CharacterStateNeutral.h"
 
 
 using namespace Framework;
@@ -26,7 +28,7 @@ using namespace Game;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Character::Character() : pSkinMeshModel(NULL), pOBB(NULL), pState(NULL)
+Character::Character() : pSkinMeshModel_(NULL), pOBB_(NULL), pState_(NULL)
 {
 }
 
@@ -36,9 +38,9 @@ Character::Character() : pSkinMeshModel(NULL), pOBB(NULL), pState(NULL)
 
 Character::~Character()
 {
-    SAFE_DELETE(pSkinMeshModel);
-    SAFE_DELETE(pOBB);
-    SAFE_DELETE(pState);
+    SAFE_DELETE(pSkinMeshModel_);
+    SAFE_DELETE(pOBB_);
+    SAFE_DELETE(pState_);
 }
 
 /******************************************************************************

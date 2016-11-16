@@ -41,8 +41,8 @@ using namespace Windows;
 ******************************************************************************/
 
 
-LPSTR                           OpenGLTitle  = "MultiPlatform(OpenGL)";
-LPSTR                           DirectXTitle = "MultiPlatform(DirectX)";
+const char*                     OpenGLTitle  = "MultiPlatform(OpenGL)";
+const char*                     DirectXTitle = "MultiPlatform(DirectX)";
 
 Windows::GameWindow*            Manager::pGameWindow;
 Windows::MainController*        Manager::pMainController;
@@ -86,7 +86,7 @@ void Manager::Init(HINSTANCE hInstance)
         return;
     pGameWindow->Show();
 
-    ///*
+    /*
     //pGameWindow->Set(OpenGLTitle);
     // レンダラーの初期化
     pRenderer = new OpenGL::Renderer();
@@ -98,7 +98,7 @@ void Manager::Init(HINSTANCE hInstance)
 
     //*/
 
-    /*
+    ///*
     //pGameWindow->SetTitle(DirectXTitle);
     // レンダラーの初期化
     pRenderer = new DirectX::Renderer();

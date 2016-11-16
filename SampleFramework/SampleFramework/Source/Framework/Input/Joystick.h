@@ -83,10 +83,10 @@ namespace Framework
 
             void Update();
 
-            bool Press(int Key){ return press[Key]; }
-            bool Trigger(int Key){ return trigger[Key]; }
-            bool Release(int Key){ return release[Key]; }
-            bool Repeat(int Key){ return repeat[Key]; }
+            bool Press(int Key){ return (press[Key] & 0x01) ? (true) : (false); }
+            bool Trigger(int Key){ return (trigger[Key] & 0x01) ? (true) : (false); }
+            bool Release(int Key){ return (release[Key] & 0x01) ? (true) : (false); }
+            bool Repeat(int Key){ return (repeat[Key] & 0x01) ? (true) : (false); }
 
             void SetRepeatTerm(int termFrame){ repeatTerm = termFrame; }
             static unsigned int GetConnectionNum() { return joyGetNumDevs(); }
@@ -94,10 +94,10 @@ namespace Framework
         private:
             void Init();
 
-            bool        press[BUTTON_MAX];
-            bool        trigger[BUTTON_MAX];
-            bool        release[BUTTON_MAX];
-            bool        repeat[BUTTON_MAX];
+            BYTE        press[BUTTON_MAX];
+            BYTE        trigger[BUTTON_MAX];
+            BYTE        release[BUTTON_MAX];
+            BYTE        repeat[BUTTON_MAX];
 
             int         repeatCnt[BUTTON_MAX];
             int         repeatTerm;

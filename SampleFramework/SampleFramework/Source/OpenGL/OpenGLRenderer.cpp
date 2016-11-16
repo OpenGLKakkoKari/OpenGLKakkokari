@@ -37,9 +37,14 @@ using namespace Windows;
 ******************************************************************************/
 
 
-OpenGL::Renderer::Renderer()
+OpenGL::Renderer::Renderer() 
+    : pTex(NULL), hWnd(NULL), glrc(NULL), hDC(NULL)
 {
     type = OPENGL;
+    for (int i = 0; i < LIGHT_MAX; i++)
+    {
+        pLight[i] = NULL;
+    }
 }
 
 /******************************************************************************
@@ -63,29 +68,37 @@ void OpenGL::Renderer::Init(GameWindow *pGameWindow)
 /**
  * OpenGL初期化
  */
-
+    
     // ピクセルフォーマット初期化
-    pfd =
-    {
-        sizeof(PIXELFORMATDESCRIPTOR),
-        1,                              // バージョン
-        PFD_DRAW_TO_WINDOW |            // ウインドウをサポート
-        PFD_SUPPORT_OPENGL |            // OpenGLをサポート
-        PFD_DOUBLEBUFFER,               // ダブルバッファ使用
-        PFD_TYPE_RGBA,                  // RGBA
-        32,                             // カラービット数
-        0, 0, 0, 0, 0, 0,
-        0,
-        0,
-        0,
-        0, 0, 0, 0,
-        32,                             // 深度バッファのビット数
-        8,                              // ステンシルバッファのビット数
-        0,
-        PFD_MAIN_PLANE,
-        0,
-        0, 0, 0
-    };
+    pfd.nSize           = sizeof(PIXELFORMATDESCRIPTOR);
+    pfd.nVersion        = 1;                                // バージョン
+    pfd.dwFlags         = ( PFD_DRAW_TO_WINDOW |            // ウインドウをサポート
+                            PFD_SUPPORT_OPENGL |            // OpenGLをサポート
+                            PFD_DOUBLEBUFFER);              // ダブルバッファ使用
+    pfd.iPixelType      = PFD_TYPE_RGBA;                    // RGBA
+    pfd.cColorBits      = 32;                               // カラービット数
+    pfd.cRedBits        = 0;
+    pfd.cRedShift       = 0;
+    pfd.cGreenBits      = 0;
+    pfd.cGreenShift     = 0;
+    pfd.cBlueBits       = 0;
+    pfd.cBlueShift      = 0;
+    pfd.cAlphaBits      = 0;
+    pfd.cAlphaShift     = 0;
+    pfd.cAccumBits      = 0;
+    pfd.cAccumRedBits   = 0;
+    pfd.cAccumGreenBits = 0;
+    pfd.cAccumBlueBits  = 0;
+    pfd.cAccumAlphaBits = 0;
+    pfd.cDepthBits      = 32;
+    pfd.cStencilBits    = 8;
+    pfd.cAuxBuffers     = 0;
+    pfd.iLayerType      = PFD_MAIN_PLANE;
+    pfd.bReserved       = 0;
+    pfd.dwLayerMask     = 0;
+    pfd.dwVisibleMask   = 0;
+    pfd.dwDamageMask    = 0;
+
     hDC = GetDC(hWnd);
     int format = ChoosePixelFormat(hDC, &pfd);
 

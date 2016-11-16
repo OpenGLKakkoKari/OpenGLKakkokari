@@ -24,7 +24,7 @@ namespace OpenGL
     class IndexBuffer : public Framework::IndexBuffer
     {
     public:
-        IndexBuffer(){}
+        IndexBuffer() : idxVBO(0){}
         virtual ~IndexBuffer(){}
 
         int* Lock()

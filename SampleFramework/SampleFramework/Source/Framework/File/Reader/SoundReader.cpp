@@ -40,10 +40,6 @@ Sound SoundReader::Load(const char *FileName, bool reverse)
     {
         return LoadWAV(FileName);
     }
-    else if (strcmp(ext, ".ogg") == 0)
-    {
-        return LoadOGG(FileName);
-    }
 
     Sound sound;
     return sound;
@@ -112,57 +108,6 @@ Sound SoundReader::LoadWAV(const char *FileName)
     }
 
     file.Close();
-
-    return sound;
-}
-
-/******************************************************************************
-@brief  OGGファイル読み込み
-@param  FileName    ( ファイル名 )
-@return Sound       ( サウンド情報 )
-******************************************************************************/
-
-Sound SoundReader::LoadOGG(const char *FileName)
-{
-    FILE *fp;
-    if (!(fp = fopen(FileName, "rb")) == NULL)
-    {
-        Error::Message("ファイル\"%s\"の読み込みに失敗しました。", FileName);
-    }
-
-    OggVorbis_File vf;
-    ov_open(fp, &vf, NULL, 0);
-    vorbis_info *pInfo = ov_info(&vf, -1);
-
-    Sound sound;
-    sound.freq = pInfo->rate;
-    strcpy(sound.FileName, FileName);
-    switch (pInfo->channels)
-    {
-    case 1: sound.format = Sound::SF_MONO16;  break;
-    case 2: sound.format = Sound::SF_STEREO16; break;
-    }
-    int bitstream;
-    int readSize = 0;
-    int comSize = 0;
-    char* tmp = new char[1024 * 80000]; // 100MB
-    char* tmpBuffer = new char[1024 * 80000]; // 100MB
-
-    while (1)
-    {
-        readSize = ov_read(&vf, (char*)tmpBuffer, 4096, 0, 2, 1, &bitstream);
-        if (comSize + readSize >= 1024 * 80000 || readSize == 0)
-            break;
-        memcpy(tmp + comSize, tmpBuffer, readSize);
-        comSize += readSize;
-    }
-
-    sound.pData = new unsigned char[comSize];
-    sound.size = comSize;
-    memcpy(sound.pData, tmp, comSize);
-
-    delete[] tmp;
-    delete[] tmpBuffer;
 
     return sound;
 }

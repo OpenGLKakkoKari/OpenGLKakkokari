@@ -1,3 +1,4 @@
+#pragma once
 /******************************************************************************
 /*!
 @file   StateManager.h
@@ -6,29 +7,23 @@
 
 ******************************************************************************/
 
-/*  インクルード
-******************************************************************************/
-
-
-#include "State.h"
-
-
 /*  クラス定義
 ******************************************************************************/
 
 
 namespace Framework
 {
+    class State;
     class StateManager
     {
     public:
         StateManager();
         virtual ~StateManager();
 
-        void Update();
-        void SetState(State* newState);
+        virtual void Update();
+        virtual void SetState(State* newState);
 
-    private:
+    protected:
         State*      nowState;
     };
 }

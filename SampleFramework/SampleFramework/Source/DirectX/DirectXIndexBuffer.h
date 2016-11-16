@@ -24,7 +24,7 @@ namespace DirectX
     class IndexBuffer : public Framework::IndexBuffer
     {
     public:
-        IndexBuffer(){}
+        IndexBuffer() : pIndexBuffer(NULL){}
         virtual ~IndexBuffer(){}
 
         int* Lock()

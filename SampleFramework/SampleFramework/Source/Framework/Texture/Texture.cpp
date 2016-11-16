@@ -35,7 +35,7 @@ Texture*        Texture::pLast = NULL;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Texture::Texture() : pData(NULL), pNext(NULL), pPrev(NULL), useNum(0)
+Texture::Texture() : pData(NULL), useNum(0), pNext(NULL), pPrev(NULL)
 {
     // 文字列の初期化
     strcpy_s(filePath, 256, "");
