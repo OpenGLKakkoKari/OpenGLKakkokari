@@ -4,6 +4,8 @@
 
 # User-specific files
 *.suo
+*.opensdf
+*.sdf
 *.user
 *.sln.docstates
 
@@ -40,10 +42,3 @@
 *.log
 *.scc
 
-# Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opensdf
-*.sdf
-*.cachefile
