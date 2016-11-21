@@ -4,6 +4,7 @@
 
 # User-specific files
 *.suo
+*.v12.suo
 *.opensdf
 *.sdf
 *.user
