@@ -163,6 +163,7 @@
     <ClCompile Include="Source\Game\GameScene.cpp" />
     <ClCompile Include="Source\Game\Plant.cpp" />
     <ClCompile Include="Source\Game\Skybox.cpp" />
+    <ClCompile Include="Source\Game\Timer.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\OpenGL\OpenGLRenderer.cpp" />
     <ClCompile Include="Source\Title\TitleScene.cpp" />
@@ -280,6 +281,7 @@
     <ClInclude Include="Source\Game\GameScene.h" />
     <ClInclude Include="Source\Game\Plant.h" />
     <ClInclude Include="Source\Game\Skybox.h" />
+    <ClInclude Include="Source\Game\Timer.h" />
     <ClInclude Include="Source\Main.h" />
     <ClInclude Include="Source\OpenGL\OpenGL.h" />
     <ClInclude Include="Source\OpenGL\OpenGLIndexBuffer.h" />

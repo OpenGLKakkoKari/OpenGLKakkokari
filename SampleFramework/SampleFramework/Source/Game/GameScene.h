@@ -33,6 +33,7 @@ namespace Game
     class GameCamera;
     class Character;
     class MeshField;
+    class Timer;
     class GameScene : public Framework::Scene
     {
     public:
@@ -51,7 +52,8 @@ namespace Game
     private:
         static GameCamera*              pCamera;
         static Character**              pCharacter;
-        static MeshField*              pMeshField;
+        static MeshField*               pMeshField;
+        static Timer*                   pTimer;
         static Framework::Stage*        pStage;
         static Framework::Sprite*       pBackground;
         static Framework::Polygon*      pPolygon;
