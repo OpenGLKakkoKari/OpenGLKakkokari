@@ -24,7 +24,7 @@ namespace Game
     {
     public:
 		enum { DIGIT_MAX = 2 };
-		enum { TIME = 99 } ;
+		enum { TIME = 11 } ;
         Timer();
         virtual ~Timer();
 

@@ -88,7 +88,7 @@ void Timer::Update(void)
 		time_ -- ;
 
 		//タイムがマイナスになると
-		if ( timeCnt_ < 0 )
+		if ( time_ < 0 )
 		{
 			time_ = 0 ;
 		}
