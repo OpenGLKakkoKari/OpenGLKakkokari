@@ -72,9 +72,6 @@
     <Filter Include="Source\Game">
       <UniqueIdentifier>{b0162544-e17a-411b-a768-4bccce2e7bed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Result">
-      <UniqueIdentifier>{48076777-a2c3-4bf7-ae13-973f01bd1db8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Windows">
       <UniqueIdentifier>{6f1ef435-7326-467e-922a-6422fe46d100}</UniqueIdentifier>
     </Filter>

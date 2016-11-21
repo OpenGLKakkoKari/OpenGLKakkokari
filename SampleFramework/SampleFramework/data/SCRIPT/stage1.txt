@@ -14,23 +14,7 @@ FIELDSET
     POS     = 0.0 0.0 0.0
     SIZE    = 6000.0 6000.0
     BLOCK   = 32 32
-    DATA    = data/BINARY/map_center.dat
-END_FIELD
-
-FIELDSET
-    TEXTURE = data/TEXTURE/Field/green000.jpg
-    POS     = 0.0 430.0 4100.0
-    SIZE    = 6200.0 2000.0
-    BLOCK   = 32 32
-    DATA    = data/BINARY/map_center.dat
-END_FIELD
-
-FIELDSET
-    TEXTURE = data/TEXTURE/Field/green000.jpg
-    POS     = -4100.0 430.0 1000.0
-    SIZE    = 2000.0 8000.0
-    BLOCK   = 32 32
-    DATA    = data/BINARY/map_center.dat
+    DATA    = data/BINARY/map.dat
 END_FIELD
 
 #------------------------------------------------------------------------------
