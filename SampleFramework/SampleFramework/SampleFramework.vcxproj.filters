@@ -317,6 +317,9 @@
     <ClCompile Include="Source\Game\Field.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\Timer.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\libpng\pnglibconf.h">
@@ -680,6 +683,9 @@
       <Filter>Source\Game\Character</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\Field.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Timer.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
   </ItemGroup>

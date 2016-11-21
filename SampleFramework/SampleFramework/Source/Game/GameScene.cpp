@@ -16,6 +16,7 @@
 #include "Character/Computer.h"
 #include "MeshField.h"
 #include "Plant.h"
+#include "Timer.h"
 #include "../Title/TitleScene.h"
 #include "../Framework/Manager.h"
 #include "../Framework/File/Reader/EffectReader.h"
@@ -40,6 +41,7 @@ using namespace Math;
 GameCamera*                 Game::GameScene::pCamera;
 Character**                 Game::GameScene::pCharacter;
 MeshField*                  Game::GameScene::pMeshField;
+Timer*                      Game::GameScene::pTimer;
 Framework::Stage*           Game::GameScene::pStage;
 Framework::Sprite*          Game::GameScene::pBackground;
 Framework::Polygon*         Game::GameScene::pPolygon;
@@ -79,6 +81,10 @@ void GameScene::Init(void)
 
     //pMeshfield = new MeshField(16, 16);
     //pGrass = Grass::Create("data/TEXTURE/grass512.png", Vector3(0.0f, 25.0f, 300.0f), Vector2(100.0f, 50.0f));
+
+	//タイマー
+	pTimer = new Timer;
+	pTimer->Init();
 
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
@@ -143,6 +149,7 @@ void GameScene::Uninit(void)
     SAFE_DELETE(pModel);
     SAFE_DELETE(pOBB);
     SAFE_DELETE(pEffect);
+    SAFE_DELETE(pTimer);
     Manager::GetSound()->Stop();
 }
 
