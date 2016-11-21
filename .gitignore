@@ -6,8 +6,9 @@
 
 # User-specific files
 
-*.exe
 *.suo
+*.db
+*.exe
 *.user
 *.opensdf
 *.sdf
