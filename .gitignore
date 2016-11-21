@@ -1,4 +1,4 @@
-## Visual Studio用の無視ファイルリストです
+﻿## Visual Studio用の無視ファイルリストです
 ## このファイルはいじらないでください
 ## by 小河原優貴
 ## Ignore Visual Studio temporary files, build results, and
@@ -6,6 +6,7 @@
 
 # User-specific files
 
+*.exe
 *.suo
 *.user
 *.opensdf
