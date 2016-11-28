@@ -13,7 +13,6 @@
 #include "GameScene.h"
 #include "GameCamera.h"
 #include "Character/Player.h"
-#include "Character/Computer.h"
 #include "MeshField.h"
 #include "Plant.h"
 #include "Timer.h"
@@ -39,7 +38,7 @@ using namespace Math;
 
 
 GameCamera*                 Game::GameScene::pCamera;
-Character**                 Game::GameScene::pCharacter;
+Player**                    Game::GameScene::pPlayer;
 MeshField*                  Game::GameScene::pMeshField;
 Timer*                      Game::GameScene::pTimer;
 Framework::Stage*           Game::GameScene::pStage;
@@ -85,15 +84,14 @@ void GameScene::Init(void)
 	//タイマー
 	pTimer = new Timer;
 	pTimer->Init();
+	
+    pPlayer = new Player*[CHARACTER_MAX];
+    pPlayer[0] = new Player;
 
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
 
     //pMeshField = new MeshField("data/TEXTURE/Field/asphalt001.jpg", 2048, 2048, Vector2(10000.0f, 10000.0f), NULL);
-
-    pCharacter = new Character*[CHARACTER_MAX];
-    pCharacter[0] = new Player;
-    pCharacter[1] = new Computer;
 
     //pBackground = Sprite::Create(
     //    // 座標
@@ -137,11 +135,11 @@ void GameScene::Uninit(void)
 {
     SAFE_DELETE(pCamera);
     
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 1; i++)
     {
-        SAFE_DELETE(pCharacter[i]);
+        SAFE_DELETE(pPlayer[i]);
     }
-    SAFE_DELETE_ARRAY(pCharacter);
+    SAFE_DELETE_ARRAY(pPlayer);
 
     SAFE_DELETE(pStage);
     SAFE_DELETE(pBackground);
@@ -191,11 +189,6 @@ void GameScene::Update(void)
         Manager::GetSound()->Play("SE5");
     }
 
-    if (OBB::CheckCollision(pCharacter[0]->pOBB_, pOBB))
-    {
-        OBB::ResolveCollision(pCharacter[0]->pOBB_, pOBB);
-    }
-    pCharacter[0]->SetPosition(pCharacter[0]->pOBB_->pos);
 
 }
 
