@@ -119,18 +119,6 @@
     <ClCompile Include="Source\Framework\File\Reader\TextReader.cpp">
       <Filter>Framework\File\Reader</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Framework\Debug\Tweaker.cpp">
-      <Filter>Framework\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Framework\Debug\Debug.cpp">
-      <Filter>Framework\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Framework\Debug\DebugTimer.cpp">
-      <Filter>Framework\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Framework\Debug\Text.cpp">
-      <Filter>Framework\Debug</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Framework\Math\Random.cpp">
       <Filter>Framework\Math</Filter>
     </ClCompile>
@@ -296,6 +284,18 @@
     <ClCompile Include="Source\Framework\Input\Mouse.cpp">
       <Filter>Framework\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Framework\DebugTool\Debug.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\DebugTool\DebugTimer.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\DebugTool\Text.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\DebugTool\Tweaker.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\libpng\pnglibconf.h">
@@ -393,18 +393,6 @@
     </ClInclude>
     <ClInclude Include="Source\Framework\Vertex.h">
       <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Debug\Debug.h">
-      <Filter>Framework\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Debug\DebugTimer.h">
-      <Filter>Framework\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Debug\Text.h">
-      <Filter>Framework\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Debug\Tweaker.h">
-      <Filter>Framework\Debug</Filter>
     </ClInclude>
     <ClInclude Include="Source\Framework\File\File.h">
       <Filter>Framework\File</Filter>
@@ -636,6 +624,18 @@
     </ClInclude>
     <ClInclude Include="Source\Framework\Input\Mouse.h">
       <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\DebugTool\Debug.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\DebugTool\DebugTimer.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\DebugTool\Text.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\DebugTool\Tweaker.h">
+      <Filter>Framework\Debug</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

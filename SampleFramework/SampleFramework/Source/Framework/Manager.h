@@ -25,7 +25,7 @@
 #include "Camera.h"
 
 #include "Fade.h"
-#include "Debug\Debug.h"
+#include "DebugTool\Debug.h"
 
 #include "SceneManager.h"
 
