@@ -1,7 +1,7 @@
 #pragma once
 /******************************************************************************
 /*!
-@file   Timer.h
+@file   Mouse.h
 @author Yuki Kogawara
 @copy   Copyright(C) 2016 Yuki Kogawara
 
@@ -11,34 +11,32 @@
 ******************************************************************************/
 
 
-#include "../Framework/GameObject.h"
-#include "../Framework/NumberSprite.h"
+#include <Windows.h>
+#include "../Math/Vector2.h"
+
 
 /*  クラス定義
 ******************************************************************************/
 
 
-namespace Game
+namespace Framework
 {
-    class Timer : public Framework::GameObject
+    namespace Input
     {
-    public:
-		enum { DIGIT_MAX = 2 };
-		enum { TIME = 11 } ;
-        Timer();
-        virtual ~Timer();
+        class Mouse
+        {
+        public:
+            Mouse(HWND hWnd);
+            virtual ~Mouse();
 
-        virtual void Init();
-        virtual void Uninit(){}
-        virtual void Update();
+            void Update();
+            Vector2 GetCursorPosition(){ return cursorPos_; }
 
-
-    private:
-        Framework::NumberSprite* pSprite[DIGIT_MAX];
-
-		int        time_;		//現在のタイム
-		int        timeCnt_ ;	//タイムカント
-    };
+        private:
+            Vector2     cursorPos_;
+            HWND        hWnd_;
+        };
+    }
 }
 
 

@@ -269,16 +269,7 @@
     <ClCompile Include="Source\Framework\StateManager.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateNeutral.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\Character.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Game\Character\Player.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\Computer.cpp">
       <Filter>Source\Game\Character</Filter>
     </ClCompile>
     <ClCompile Include="Source\Framework\Stage.cpp">
@@ -296,26 +287,14 @@
     <ClCompile Include="Source\Framework\Mesh\SkyboxModel.cpp">
       <Filter>Framework\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateMelee.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateShooting.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateLanding.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateJumping.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Game\Character\CharacterStateWalking.cpp">
-      <Filter>Source\Game\Character</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Game\Field.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\Timer.cpp">
       <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Input\Mouse.cpp">
+      <Filter>Framework\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -631,16 +610,7 @@
     <ClInclude Include="Source\Framework\StateManager.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateNeutral.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\Character.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Game\Character\Player.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\Computer.h">
       <Filter>Source\Game\Character</Filter>
     </ClInclude>
     <ClInclude Include="Source\Framework\Stage.h">
@@ -658,32 +628,14 @@
     <ClInclude Include="Source\Framework\Mesh\SkyboxModel.h">
       <Filter>Framework\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateManager.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterState.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateMelee.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateShooting.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateJumping.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateLanding.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Game\Character\CharacterStateWalking.h">
-      <Filter>Source\Game\Character</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Game\Field.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\Timer.h">
       <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\Input\Mouse.h">
+      <Filter>Framework\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

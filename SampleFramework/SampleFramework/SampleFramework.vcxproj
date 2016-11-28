@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -118,6 +118,7 @@
     <ClCompile Include="Source\Framework\GameObject.cpp" />
     <ClCompile Include="Source\Framework\Input\Joystick.cpp" />
     <ClCompile Include="Source\Framework\Input\Keyboard.cpp" />
+    <ClCompile Include="Source\Framework\Input\Mouse.cpp" />
     <ClCompile Include="Source\Framework\Manager.cpp" />
     <ClCompile Include="Source\Framework\Math\Random.cpp" />
     <ClCompile Include="Source\Framework\Math\Matrix.cpp" />
@@ -129,14 +130,6 @@
     <ClCompile Include="Source\Framework\Stage.cpp" />
     <ClCompile Include="Source\Framework\StateManager.cpp" />
     <ClCompile Include="Source\Framework\TokenAnalyzer.cpp" />
-    <ClCompile Include="Source\Game\Character\Character.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateJumping.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateLanding.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateMelee.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateNeutral.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateShooting.cpp" />
-    <ClCompile Include="Source\Game\Character\CharacterStateWalking.cpp" />
-    <ClCompile Include="Source\Game\Character\Computer.cpp" />
     <ClCompile Include="Source\Game\Character\Player.cpp" />
     <ClCompile Include="Source\Game\Field.cpp" />
     <ClCompile Include="Source\Game\GameCamera.cpp" />
@@ -196,6 +189,7 @@
     <ClInclude Include="Source\Framework\GameObject.h" />
     <ClInclude Include="Source\Framework\IndexBuffer.h" />
     <ClInclude Include="Source\Framework\Input\Joystick.h" />
+    <ClInclude Include="Source\Framework\Input\Mouse.h" />
     <ClInclude Include="Source\Framework\Mesh\Bone.h" />
     <ClInclude Include="Source\Framework\Camera.h" />
     <ClInclude Include="Source\Framework\Collision\OBB.h" />
@@ -240,16 +234,6 @@
     <ClInclude Include="Source\Framework\StateManager.h" />
     <ClInclude Include="Source\Framework\TokenAnalyzer.h" />
     <ClInclude Include="Source\Framework\VertexBuffer.h" />
-    <ClInclude Include="Source\Game\Character\Character.h" />
-    <ClInclude Include="Source\Game\Character\CharacterState.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateJumping.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateLanding.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateManager.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateMelee.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateNeutral.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateShooting.h" />
-    <ClInclude Include="Source\Game\Character\CharacterStateWalking.h" />
-    <ClInclude Include="Source\Game\Character\Computer.h" />
     <ClInclude Include="Source\Game\Character\Player.h" />
     <ClInclude Include="Source\Game\Field.h" />
     <ClInclude Include="Source\Game\MeshField.h" />
