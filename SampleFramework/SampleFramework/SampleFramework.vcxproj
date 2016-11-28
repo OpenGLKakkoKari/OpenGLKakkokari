@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -118,6 +118,7 @@
     <ClCompile Include="Source\Framework\GameObject.cpp" />
     <ClCompile Include="Source\Framework\Input\Joystick.cpp" />
     <ClCompile Include="Source\Framework\Input\Keyboard.cpp" />
+    <ClCompile Include="Source\Framework\Input\Mouse.cpp" />
     <ClCompile Include="Source\Framework\Manager.cpp" />
     <ClCompile Include="Source\Framework\Math\Random.cpp" />
     <ClCompile Include="Source\Framework\Math\Matrix.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Source\Framework\GameObject.h" />
     <ClInclude Include="Source\Framework\IndexBuffer.h" />
     <ClInclude Include="Source\Framework\Input\Joystick.h" />
+    <ClInclude Include="Source\Framework\Input\Mouse.h" />
     <ClInclude Include="Source\Framework\Mesh\Bone.h" />
     <ClInclude Include="Source\Framework\Camera.h" />
     <ClInclude Include="Source\Framework\Collision\OBB.h" />
