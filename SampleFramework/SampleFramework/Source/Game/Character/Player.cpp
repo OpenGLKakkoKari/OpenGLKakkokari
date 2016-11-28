@@ -101,6 +101,7 @@ void Player::Update(void)
 //ŽŽì
 	//ƒJƒƒ‰‚ÌŠp“x‚ðŽó‚¯Žæ‚è
     Vector3 cameraRot = GameScene::GetCamera()->GetRotation();
+
 	float unit = 5.0f;
 
 	if (Manager::GetKeyboard()->Press('Q'))
