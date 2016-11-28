@@ -49,6 +49,7 @@ Windows::MainController*        Manager::pMainController;
 Framework::Renderer*            Manager::pRenderer;
 Framework::Input::Keyboard*     Manager::pKeyboard;
 Framework::Input::Joystick*     Manager::pJoystick;
+Framework::Input::Mouse*        Manager::pMouse;
 Framework::Error*               Manager::pError;
 
 Framework::Light*               Manager::pLight[3];
@@ -160,6 +161,7 @@ void Manager::Init(HINSTANCE hInstance)
     // “ü—Í‰Šú‰»
     pKeyboard = new Input::Keyboard;
     pJoystick = new Input::Joystick;
+    pMouse    = new Input::Mouse(pGameWindow->GetHandle());
 
     // ‰¹Œ¹ŠÇ—‚Ì‰Šú‰»
     pSoundManager = new SoundManager;
@@ -196,6 +198,7 @@ void Manager::Uninit()
     SAFE_UNINIT(pError);
     SAFE_DELETE(pKeyboard);
     SAFE_DELETE(pJoystick);
+    SAFE_DELETE(pMouse);
     SAFE_UNINIT(pDebug);
     SAFE_UNINIT(pRenderer);
     SAFE_DELETE(pGameWindow);
@@ -237,6 +240,10 @@ void Manager::Update()
 
     pKeyboard->Update();
     pJoystick->Update();
+    pMouse->Update();
+
+    Vector2 pos = pMouse->GetCursorPosition();
+    pDebug->Print("Mouse : (%f, %f)\n", pos.x, pos.y);
 
     pSceneManager->Update();
     GameObject::UpdateAll();

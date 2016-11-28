@@ -62,9 +62,6 @@ void Skybox::Update(void)
     rot_.y += ToRad(0.015f);
     //pBox->SetRotation(rot_);
 
-    Player* pPlayer = reinterpret_cast<Player*>(GameScene::GetCharacter(0));
-    Vector3 playerPos = pPlayer->GetPosition();
-    pBox->SetPosition(playerPos);
 }
 
 /******************************************************************************
