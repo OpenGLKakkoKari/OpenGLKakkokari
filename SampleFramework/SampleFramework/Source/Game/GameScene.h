@@ -31,7 +31,7 @@ namespace Framework
 namespace Game
 {
     class GameCamera;
-    class Character;
+    class Player;
     class MeshField;
     class Timer;
     class GameScene : public Framework::Scene
@@ -47,11 +47,11 @@ namespace Game
         void Update();
 
         static GameCamera* GetCamera() { return pCamera; }
-        static Character* GetCharacter(int index) { return pCharacter[index]; }
+		static Player* GetPlayer (int index) { return pPlayer[index]; }
 
     private:
         static GameCamera*              pCamera;
-        static Character**              pCharacter;
+        static Player**                 pPlayer;
         static MeshField*               pMeshField;
         static Timer*                   pTimer;
         static Framework::Stage*        pStage;
