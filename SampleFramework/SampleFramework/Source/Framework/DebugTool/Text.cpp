@@ -29,9 +29,9 @@ using Framework::Sprite;
 
 static char* TextureNameTable[Text::FONT_TYPE_MAX][Text::FONT_SIZE_MAX] =
 {
-    "data/TEXTURE/Debug/Meiryo/string_mini.png",
-    "data/TEXTURE/Debug/5x5/string_mini.png",
-    "data/TEXTURE/Debug/Osaka/string_mini.png"
+    "data/TEXTURE/DebugTool/Meiryo/string_mini.png",
+    "data/TEXTURE/DebugTool/5x5/string_mini.png",
+    "data/TEXTURE/DebugTool/Osaka/string_mini.png"
 };
 
 static Vector2 FontSizeTable[Text::FONT_TYPE_MAX][Text::FONT_SIZE_MAX] = 

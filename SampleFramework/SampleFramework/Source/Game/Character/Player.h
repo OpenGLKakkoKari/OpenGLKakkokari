@@ -12,7 +12,8 @@
 ******************************************************************************/
 
 
-#include "Character.h"
+#include "../../Framework/GameObject.h"
+#include "../../Framework/Mesh/Model.h"
 
 
 /*  ƒNƒ‰ƒX’è‹`
@@ -21,7 +22,7 @@
 
 namespace Game
 {
-    class Player : public Character
+	class Player : public Framework::GameObject
     {
     public:
         Player();
@@ -30,6 +31,8 @@ namespace Game
         void Init(){}
         void Uninit(){}
         void Update();
+
+		Framework::Model* pModel_;
     };
 }
 

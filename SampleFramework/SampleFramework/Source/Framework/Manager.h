@@ -15,6 +15,7 @@
 #include "Renderer.h"
 #include "Input\Keyboard.h"
 #include "Input\Joystick.h"
+#include "Input\Mouse.h"
 #include "Error.h"
 
 #include "Texture\TextureFactory.h"
@@ -24,7 +25,7 @@
 #include "Camera.h"
 
 #include "Fade.h"
-#include "Debug\Debug.h"
+#include "DebugTool\Debug.h"
 
 #include "SceneManager.h"
 
@@ -94,6 +95,7 @@ namespace Framework
         static Renderer                 *pRenderer;
         static Input::Keyboard          *pKeyboard;
         static Input::Joystick          *pJoystick;
+        static Input::Mouse             *pMouse;
         static Error                    *pError;
 
         static TextureFactory           *pTextureFactory;
