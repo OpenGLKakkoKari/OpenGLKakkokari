@@ -90,6 +90,27 @@ GameCamera::~GameCamera()
 
 void GameCamera::Init(void)
 {
+	//視点の初期化
+	traEyeAim = Vector3(0.0f, 0.0f, 0.0f);      // 視点目標座標
+	traEyeVec = Vector3(0.0f, 0.0f, 0.0f);      // 視点移動量
+	traEyeIner = Vector3(0.0f, 0.0f, 0.0f);     // 視点慣性量
+	traEyeUnit = Vector3(0.0f, 0.0f, 0.0f);     // 視点単位移動量
+
+	//注視点の初期化
+	traAtAim = Vector3(0.0f, 0.0f, 0.0f);      // 注視点目標座標
+	traAtVec = Vector3(0.0f, 0.0f, 0.0f);      // 注視点移動量
+	traAtIner = Vector3(0.0f, 0.0f, 0.0f);     // 注視点慣性量
+	traAtUnit = Vector3(0.0f, 0.0f, 0.0f);     // 注視点単位移動量
+	//その他のデータ初期
+	distEyetoModel = Vector3(0.0f, 0.0f, 0.0f); // 視点からモデルまでの距離
+	distModeltoAt = Vector3(0.0f, 0.0f, 0.0f);  // モデルから注視点までの距離
+	rot = Vector3(0.0f, 0.0f, 0.0f);            // カメラの向き
+	fDistance = 0.0f;      // 距離
+	rotAim = Vector3(0.0f, 0.0f, 0.0f);         // カメラの目標角度
+	rotVec = Vector3(0.0f, 0.0f, 0.0f);         // カメラの角移動量
+	rotIner = Vector3(0.0f, 0.0f, 0.0f);        // カメラの慣性量
+	rotUnit = Vector3(0.0f, 0.0f, 0.0f);        // カメラの単位回転量
+	//計算
 }
 
 /******************************************************************************
@@ -106,152 +127,34 @@ void GameCamera::Uninit(void)
 
 void GameCamera::Update(void)
 {
-<<<<<<< HEAD
 //試作
-	//プレイヤーデータ(位置、角度)を受け取り
-    Vector3 posModel = GameScene::GetCharacter(0)->GetPosition();
-    Vector3 rotModel = GameScene::GetCharacter(0)->GetRotation();
-    Vector3 traVecModel = GameScene::GetCharacter(0)->traVec;
-    Vector3 rotAimModel = GameScene::GetCharacter(0)->rotAim;
-=======
+	//プレイヤーのデータ受け取り
+	Vector3 posModel = GameScene::GetPlayer(0)->GetPosition();	//位置取得
+    Vector3 rotModel = GameScene::GetPlayer(0)->GetRotation();	//角度取得
 
-	Player* pPlayer = GameScene::GetPlayer(0);
-	Vector3 posModel = pPlayer->GetPosition();
-	Vector3 rotModel = pPlayer->GetRotation();
->>>>>>> 45a17be7d208e8618ed49dd142766dee4a7bcbfe
-
-	At  = Vector3(
-		posModel.x ,
-		posModel.y + 100.0f,
-		posModel.z
-		);
-	Eye = Vector3(
-		posModel.x + sinf(rotModel.y) * 300.0f,
-		posModel.y + 200.0f,
-		posModel.z + cosf(rotModel.y) * 300.0f
-		);
-
-	rot.y = atan2f(At.x - Eye.x, At.z - Eye.z);
-
-    //Vector3 rotModel = GameScene::GetCharacter(0)->GetRotation();
-    //Vector3 traVecModel = GameScene::GetCharacter(0)->traVec;
-    //Vector3 rotAimModel = GameScene::GetCharacter(0)->rotAim;
-
-    ///*
-    //* 視点移動
-    //*/
-
+	/*
+	* 視点移動
+	*/
     // 上移動
-    //if (Manager::GetKeyboard()->Press('Y'))
-    //    distEyetoModel.y += 1.0f;
-    //// 下移動
-    //if (Manager::GetKeyboard()->Press('N'))
-    //    distEyetoModel.y -= 1.0f;
-
-    ///*
-    //* 注視点移動
-    //*/
-
-    // 上移動
-<<<<<<< HEAD
-    if (Manager::GetKeyboard()->Press(VK_UP))
-        distModeltoAt.y += 1.0f;
+    if (Manager::GetKeyboard()->Press('Y'))
+        distEyetoModel.y += 1.0f;
     // 下移動
-    if (Manager::GetKeyboard()->Press(VK_DOWN))
-        distModeltoAt.y -= 1.0f;
-    // 右移動
-    if (Manager::GetKeyboard()->Press(VK_RIGHT))
-    // 左移動
-    if (Manager::GetKeyboard()->Press(VK_LEFT))
-=======
-    //if (Manager::GetKeyboard()->Press('T'))
-    //    distModeltoAt.y += 1.0f;
-    //// 下移動
-    //if (Manager::GetKeyboard()->Press('B'))
-    //    distModeltoAt.y -= 1.0f;
+    if (Manager::GetKeyboard()->Press('N'))
+        distEyetoModel.y -= 1.0f;
 
-    /////*
-    ////* その他操作
-    ////*/
+	/*
+	* 注視点移動
+	*/
+	// 上移動
+	if (Manager::GetKeyboard()->Press('T'))
+		distModeltoAt.y += 1.0f;
+	// 下移動
+	if (Manager::GetKeyboard()->Press('B'))
+		distModeltoAt.y -= 1.0f;
 
-    //// 視点と注視点の距離調整
-    //if (Manager::GetKeyboard()->Press('U'))
-    //{
-    //    distEyetoModel.y -= 1.0f;
-    //    distEyetoModel.z += 3.0f;
-    //}
-    //if (Manager::GetKeyboard()->Press('M'))
-    //{
-    //    distEyetoModel.y += 1.0f;
-    //    distEyetoModel.z -= 3.0f;
-    //}
-
-    //// 注視点とモデルの単位距離から注視点の移動量を算出
-    //distModeltoAt.x = -sinf(rotModel.y) * 12.5f;
-    //distModeltoAt.z = -cosf(rotModel.y) * 12.5f;
-
-    //// 注視点目標をモデルから一定距離離れた地点に設定
-    //traAtAim.x = posModel.x + distModeltoAt.x + traVecModel.x * 10.0f;
-    //traAtAim.y = posModel.y + distModeltoAt.y + traVecModel.y * 10.0f;
-    //traAtAim.z = posModel.z + distModeltoAt.z + traVecModel.z * 10.0f;
-
-    //// 視点回転目標をモデル逆方向に設定
-    //rotAim.y = rotAimModel.y;
-
-    //traEyeAim.x = (posModel.x + sinf(rot.y) * distEyetoModel.z) + traVecModel.x;
-    //traEyeAim.y = (posModel.y + distEyetoModel.y + traVecModel.y);
-    //traEyeAim.z = (posModel.z + cosf(rot.y) * distEyetoModel.z) + traVecModel.z;
-
-    //// 移動量を算出
-    //traAtVec.x = traAtAim.x - At.x;
-    //traAtVec.y = traAtAim.y - At.y;
-    //traAtVec.z = traAtAim.z - At.z;
-
-    //traEyeVec.x = traEyeAim.x - Eye.x;
-    //traEyeVec.y = traEyeAim.y - Eye.y;
-    //traEyeVec.z = traEyeAim.z - Eye.z;
-
-    //rotVec.x = rotAim.x - rot.x;
-    //rotVec.y = rotAim.y - rot.y;
-    //rotVec.z = rotAim.z - rot.z;
-
-    //if (rotVec.y > _PI)
-    //    rotVec.y -= _2PI;
-    //else if (rotVec.y < -_PI)
-    //    rotVec.y += _2PI;
-
-    //// 慣性をかける
-    //traAtVec.x += -traAtVec.x * traAtIner.x;
-    //traAtVec.y += -traAtVec.y * traAtIner.y;
-    //traAtVec.z += -traAtVec.z * traAtIner.z;
-
-    //traEyeVec.x += -traEyeVec.x * traEyeIner.x;
-    //traEyeVec.y += -traEyeVec.y * traEyeIner.y;
-    //traEyeVec.z += -traEyeVec.z * traEyeIner.z;
-
-    //rotVec.x += -rotVec.x * rotIner.x;
-    //rotVec.y += -rotVec.y * rotIner.y;
-    //rotVec.z += -rotVec.z * rotIner.z;
-
-    //// 移動量を現在の座標に反映
-    //At.x += traAtVec.x;
-    //At.y += traAtVec.y;
-    //At.z += traAtVec.z;
-
-    //Eye.x = posModel.x + sinf(rot.y) * distEyetoModel.z;
-    //Eye.y = posModel.y + distEyetoModel.y;
-    //Eye.z = posModel.z + cosf(rot.y) * distEyetoModel.z;
-
-    //rot.x += rotVec.x;
-    //rot.y += rotVec.y;
-    //rot.z += rotVec.z;
->>>>>>> 45a17be7d208e8618ed49dd142766dee4a7bcbfe
-
-    ///*
-    //* 範囲調整
+	///*
+    //* その他操作
     //*/
-
-<<<<<<< HEAD
     // 視点と注視点の距離調整
     if (Manager::GetKeyboard()->Press('U'))
     {
@@ -263,23 +166,6 @@ void GameCamera::Update(void)
         distEyetoModel.y += 1.0f;
         distEyetoModel.z -= 3.0f;
     }
-
-    // 注視点とモデルの単位距離から注視点の移動量を算出
-    distModeltoAt.x = -sinf(rotModel.y) * 12.5f;
-    distModeltoAt.z = -cosf(rotModel.y) * 12.5f;
-
-    // 注視点目標をモデルから一定距離離れた地点に設定
-    traAtAim.x = posModel.x + distModeltoAt.x + traVecModel.x * 10.0f;
-    traAtAim.y = posModel.y + distModeltoAt.y + traVecModel.y * 10.0f;
-    traAtAim.z = posModel.z + distModeltoAt.z + traVecModel.z * 10.0f;
-
-    // 視点回転目標をモデル逆方向に設定
-    rotAim.y = rotAimModel.y;
-
-    traEyeAim.x = (posModel.x + sinf(rot.y) * distEyetoModel.z) + traVecModel.x;
-    traEyeAim.y = (posModel.y + distEyetoModel.y + traVecModel.y);
-    traEyeAim.z = (posModel.z + cosf(rot.y) * distEyetoModel.z) + traVecModel.z;
-
     // 移動量を算出
     traAtVec.x = traAtAim.x - At.x;
     traAtVec.y = traAtAim.y - At.y;
@@ -327,6 +213,25 @@ void GameCamera::Update(void)
     /*
     * 範囲調整
     */
+
+    // 角度を範囲内に収める
+    if (rot.y > _PI)
+    {
+        rot.y -= _2PI;
+    }
+    if (rot.y < -_PI)
+    {
+        rot.y += _2PI;
+    }
+    // 角度を範囲内に収める
+    if (rotAim.y > _PI)
+    {
+        rotAim.y -= _2PI;
+    }
+    if (rotAim.y < -_PI)
+    {
+        rotAim.y += _2PI;
+    }
 
     // 角度を範囲内に収める
     if (rot.y > _PI)
@@ -475,7 +380,6 @@ void GameCamera::Update(void)
  //       rotAim.y += _2PI;
  //   }
 
-=======
     //// 角度を範囲内に収める
     //if (rot.y > _PI)
     //{
@@ -494,7 +398,6 @@ void GameCamera::Update(void)
     //{
     //    rotAim.y += _2PI;
     //}
->>>>>>> 45a17be7d208e8618ed49dd142766dee4a7bcbfe
 }
 
 /******************************** 実装ここまで *******************************/
