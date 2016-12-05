@@ -28,11 +28,12 @@ namespace Game
         Player();
         ~Player();
 
-        void Init(){}
+        void Init();
         void Uninit(){}
         void Update();
 
 		Framework::Model* pModel_;
+
     };
 }
 

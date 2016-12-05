@@ -58,11 +58,21 @@ Player::~Player()
 @brief  更新処理
 ******************************************************************************/
 
+void Player::Init ( void )
+{
+	//bJump = false ;
+}
+
+/******************************************************************************
+@brief  更新処理
+******************************************************************************/
+
 void Player::Update(void)
 {
 //ベース
 	//カメラの角度を受け取り
     Vector3 cameraRot = GameScene::GetCamera()->GetRotation();
+<<<<<<< HEAD
 	float unit = 5.0f;
 
 	if (Manager::GetKeyboard()->Press('Q'))
@@ -74,6 +84,16 @@ void Player::Update(void)
     {
         pState_->Update();
     }
+=======
+	const float MODEL_MOVE = 3.0f;	//移動量
+
+	//ジャンプで使う変数
+	const float Vo = 50.0f ;		//初速度
+	const float gravity = -2.0f ;	//重力
+	static int t = 0 ;				//時間
+	static bool bJump = false ;		//ジャンプ中かどうか
+
+>>>>>>> 924f01c3d5987d02112bf980cb34dc1791fd1b6f
 
     if (Manager::GetKeyboard()->Press('A') &&
         Manager::GetKeyboard()->Press('W'))
@@ -124,9 +144,35 @@ void Player::Update(void)
         rotAim.y = cameraRot.y + 0.2f;
     }
 
+<<<<<<< HEAD
     pos_.x += traVec.x;
     pos_.y += traVec.y;
     pos_.z += traVec.z;
+=======
+	//ジャンプ
+	if (Manager::GetKeyboard()->Trigger('J'))
+	{
+		bJump = true ;
+	}
+
+	//ジャンプ中なら
+	if ( bJump )
+	{
+		//速度計算
+		float v = Vo + gravity * t ;
+
+		pos_.y += v ;
+
+		t ++ ;
+
+		//着地したら
+		if ( pos_.y <= 0.0f )
+		{
+			bJump = false ;
+			t = 0 ;
+		}
+	}
+>>>>>>> 924f01c3d5987d02112bf980cb34dc1791fd1b6f
 
     traVec.x += -traVec.x * traIner.x;
     traVec.z += -traVec.z * traIner.z;
