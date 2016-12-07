@@ -14,6 +14,7 @@
 
 #include "../../Framework/GameObject.h"
 #include "../../Framework/Mesh/Model.h"
+#include "../../Framework/Collision/OBB.h"
 
 
 /*  ƒNƒ‰ƒX’è‹`
@@ -33,6 +34,8 @@ namespace Game
         void Update();
 
 		Framework::Model* pModel_;
+		Framework::OBB *pOBBPlayer_ ;
+		//Framework::OBB *pOBBAttack_ ;
 
     };
 }

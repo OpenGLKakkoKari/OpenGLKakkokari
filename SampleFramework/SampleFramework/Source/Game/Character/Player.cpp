@@ -16,7 +16,6 @@
 #include "../../Framework/Math/Math.h"
 #include "../GameScene.h"
 
-
 using namespace Game;
 using namespace Framework;
 using namespace Framework::Math;
@@ -52,6 +51,8 @@ Player::Player()
 Player::~Player()
 {
 	SAFE_DELETE(pModel_)
+	SAFE_DELETE(pOBBPlayer_)
+	//SAFE_DELETE(pOBBAttack_)
 }
 
 /******************************************************************************
@@ -60,7 +61,8 @@ Player::~Player()
 
 void Player::Init ( void )
 {
-	//bJump = false ;
+	pOBBPlayer_ = OBB::Create ( pModel_ ->pMesh, pos_ , rot_ ) ;
+	//pOBBAttack_ = OBB::Create ( Vector3(50,50,50), Vector3(pos_.x,pos_.y+100,pos_.z-50) , rot_ ) ;
 }
 
 /******************************************************************************
@@ -181,6 +183,12 @@ void Player::Update(void)
     pModel_->SetPosition(pos_);
     pModel_->SetRotation(rot_);
     pModel_->SetScale(scale_);
+
+	pOBBPlayer_->pos = pos_ ;
+	pOBBPlayer_->pBox->SetPosition(pos_);
+
+	//pOBBAttack_->pos = Vector3(pos_.x,pos_.y+150,pos_.z-50) ;
+	//pOBBAttack_->pBox->SetPosition(Vector3(pos_.x,pos_.y+100,pos_.z-50));
 
 }
 
