@@ -87,6 +87,7 @@ void GameScene::Init(void)
 	
     pPlayer = new Player*[CHARACTER_MAX];
     pPlayer[0] = new Player;
+	pPlayer[0]->Init() ;
 
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
@@ -117,7 +118,7 @@ void GameScene::Init(void)
     pModel = Model::CreateBox(Vector3(200.0f, 200.0f, 200.0f));
     pModel->SetUse(false);
 
-    pOBB = OBB::Create(pModel->pMesh, Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 0.0f, 0.0f));
+    //pOBB = OBB::Create(pModel->pMesh, Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 0.0f, 0.0f));
 
     pEffect = EffectReader::LoadEffect("data/EFFECT/explosion.effect");
     pEffect->Pause();
