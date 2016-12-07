@@ -58,10 +58,26 @@ Player::~Player()
 @brief  更新処理
 ******************************************************************************/
 
+void Player::Init ( void )
+{
+	//bJump = false ;
+}
+
+/******************************************************************************
+@brief  更新処理
+******************************************************************************/
+
 void Player::Update(void)
 {
     Vector3 cameraRot = GameScene::GetCamera()->GetRotation();
-	const float MODEL_MOVE = 3.0f;
+	const float MODEL_MOVE = 3.0f;	//移動量
+
+	//ジャンプで使う変数
+	const float Vo = 50.0f ;		//初速度
+	const float gravity = -2.0f ;	//重力
+	static int t = 0 ;				//時間
+	static bool bJump = false ;		//ジャンプ中かどうか
+
 
     if (Manager::GetKeyboard()->Press('A') &&
         Manager::GetKeyboard()->Press('W'))
@@ -109,6 +125,29 @@ void Player::Update(void)
 		pos_.z -= cosf( _PI / 2 + cameraRot.y ) * MODEL_MOVE ;
     }
 
+	//ジャンプ
+	if (Manager::GetKeyboard()->Trigger('J'))
+	{
+		bJump = true ;
+	}
+
+	//ジャンプ中なら
+	if ( bJump )
+	{
+		//速度計算
+		float v = Vo + gravity * t ;
+
+		pos_.y += v ;
+
+		t ++ ;
+
+		//着地したら
+		if ( pos_.y <= 0.0f )
+		{
+			bJump = false ;
+			t = 0 ;
+		}
+	}
 
 
 	Manager::GetDebug()->Print("cameraRot : %f\n", cameraRot.y);
