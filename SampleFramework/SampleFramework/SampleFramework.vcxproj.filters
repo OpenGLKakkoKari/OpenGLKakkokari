@@ -296,6 +296,9 @@
     <ClCompile Include="Source\Framework\DebugTool\Tweaker.cpp">
       <Filter>Framework\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\Score.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\libpng\pnglibconf.h">
@@ -636,6 +639,9 @@
     </ClInclude>
     <ClInclude Include="Source\Framework\DebugTool\Tweaker.h">
       <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Score.h">
+      <Filter>Source\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

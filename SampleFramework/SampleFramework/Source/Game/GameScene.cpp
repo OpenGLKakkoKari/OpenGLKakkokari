@@ -16,6 +16,7 @@
 #include "MeshField.h"
 #include "Plant.h"
 #include "Timer.h"
+#include "Score.h"
 #include "../Title/TitleScene.h"
 #include "../Framework/Manager.h"
 #include "../Framework/File/Reader/EffectReader.h"
@@ -41,6 +42,7 @@ GameCamera*                 Game::GameScene::pCamera;
 Player**                    Game::GameScene::pPlayer;
 MeshField*                  Game::GameScene::pMeshField;
 Timer*                      Game::GameScene::pTimer;
+Score*						Game::GameScene::pScore;
 Framework::Stage*           Game::GameScene::pStage;
 Framework::Sprite*          Game::GameScene::pBackground;
 Framework::Polygon*         Game::GameScene::pPolygon;
@@ -84,6 +86,10 @@ void GameScene::Init(void)
 	//タイマー
 	pTimer = new Timer;
 	pTimer->Init();
+
+	//タイマー
+	pScore = new Score;
+	pScore->Init();
 	
     pPlayer = new Player*[CHARACTER_MAX];
     pPlayer[0] = new Player;
@@ -148,6 +154,7 @@ void GameScene::Uninit(void)
     SAFE_DELETE(pOBB);
     SAFE_DELETE(pEffect);
     SAFE_DELETE(pTimer);
+	SAFE_DELETE(pScore);
     Manager::GetSound()->Stop();
 }
 

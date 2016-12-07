@@ -34,6 +34,7 @@ namespace Game
     class Player;
     class MeshField;
     class Timer;
+	class Score;
     class GameScene : public Framework::Scene
     {
     public:
@@ -54,6 +55,7 @@ namespace Game
         static Player**                 pPlayer;
         static MeshField*               pMeshField;
         static Timer*                   pTimer;
+		static Score*					pScore;
         static Framework::Stage*        pStage;
         static Framework::Sprite*       pBackground;
         static Framework::Polygon*      pPolygon;

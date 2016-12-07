@@ -14,7 +14,7 @@ FIELDSET
     POS     = 0.0 0.0 0.0
     SIZE    = 6000.0 6000.0
     BLOCK   = 32 32
-    DATA    = data/BINARY/map.dat
+    DATA    = data/BINARY/test.hsd
 END_FIELD
 
 #------------------------------------------------------------------------------
@@ -29,5 +29,26 @@ END_SKYBOX
 # モデルの配置
 #------------------------------------------------------------------------------
 #==============================================================================
+ODELSET
+    MODEL   = data/MODEL/road.x
+    POS     = -4750.0 0.0 -3060.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/road.x
+    POS     = -4250.0 0.0 -3060.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/road.x
+    POS     = -3750.0 0.0 -3060.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+MODELSET
+    MODEL   = data/MODEL/road.x
+    POS     = -3250.0 0.0 -3060.0
+    ROT     = 0.0 180.0 0.0
+END_MODELSET
+
 END_SCRIPT      # この行は絶対消さないこと！
 

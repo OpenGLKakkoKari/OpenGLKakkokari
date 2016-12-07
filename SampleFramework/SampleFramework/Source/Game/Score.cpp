@@ -2,6 +2,7 @@
 /*!
 @file   Score.cpp
 @author Yuki Kogawara
+@editor Daisuke Yokoyama -> 2016/12/5
 @copy   Copyright(C) 2016 Yuki Kogawara
 
 ******************************************************************************/
@@ -12,9 +13,9 @@
 
 #include "Score.h"
 #include <math.h>
+#include "GameScene.h"
 #include "../Framework/Math/Math.h"
 #include "../Framework/Manager.h"
-#include "../Framework/NumberSprite.h"
 
 
 using namespace Framework;
@@ -29,8 +30,13 @@ using namespace Game;
 @brief  コンストラクタ
 ******************************************************************************/
 
-Score::Score() : pNumberList(NULL), value_(0), digits_(6)
+Score::Score()
 {
+	for (int nCnt = 0; nCnt < DIGIT_MAX; nCnt++)
+	{
+		pSprite[nCnt] = NULL;
+	}
+
 }
 
 /******************************************************************************
@@ -39,14 +45,10 @@ Score::Score() : pNumberList(NULL), value_(0), digits_(6)
 
 Score::~Score()
 {
-    if (pNumberList)
-    {
-        for (int i = 0; i < digits_; i++)
-        {
-            SAFE_DELETE(pNumberList[i])
-        }
-        SAFE_DELETE(pNumberList)
-    }
+	for (int nCnt = 0; nCnt < DIGIT_MAX; nCnt++)
+	{
+		SAFE_DELETE(pSprite[nCnt]);
+	}
 }
 
 /******************************************************************************
@@ -55,75 +57,68 @@ Score::~Score()
 
 void Score::Init(void)
 {
-    pNumberList = new NumberSprite*[digits_];
-    for (int i = 0; i < digits_; i++)
-    {
-        pNumberList[i] = new NumberSprite;
-    }
+	m_score = SCORE;
+
+	for (int nCnt = 0; nCnt < DIGIT_MAX; nCnt++)
+	{
+		pSprite[nCnt] = NumberSprite::Create(
+			// 座標
+			Vector2(1000.0f + nCnt*80.0f, 80.0f),
+			// 大きさ
+			Vector2(80.0f, 80.0f),
+			// 色
+			Color(255, 255, 255, 255),
+			// テクスチャファイル名
+			"data/TEXTURE/number.png",
+			// 番号
+			0);
+	}
+
 }
 
 /******************************************************************************
-@brief  描画処理
+@brief  更新処理
 ******************************************************************************/
 
 void Score::Update(void)
 {
-
-    const Vector2 numberSize = Vector2(size.x / pScore->digits_, size.y);
-    const Vector2 numberFirstPos = Vector2(size.x, size.x);
-
-    for (int i = 0; i < digits_; i++)
-    {
-    }
+	//加算テスト
+	if (Manager::GetKeyboard()->Trigger('P'))
+	{
+		AddScore(10);
+	}
 }
+
 
 /******************************************************************************
-@brief  スコア生成処理
-@param  FileName    テクスチャ名
-@param  pos         座標
-@param  size        大きさ
-@param  polygonNum  描画枚数
-@return Score       草情報
+@brief  スコア加算処理
 ******************************************************************************/
-
-Score* Score::Create(
-    const char* FileName,
-    const Vector3& pos,
-    const Vector2& size,
-    int score)
+void Game::Score::AddScore(int add)
 {
-    Score* pScore = new Score;
+	//スコア加算
+	m_score += add;
 
-    pScore->SetValue(score);
-    pScore->Init();
-    
-    const Vector2 numberSize = Vector2(size.x / pScore->digits_, size.y);
-    const Vector2 numberFirstPos = Vector2(size.x, size.x);
+	//今のスコアを保存
+	int score = m_score;
 
-    for (int i = 0; i < digits_; i++)
-    {
-    }
+	//表示するための計算
+	for (int nCnt = DIGIT_MAX-1; nCnt >= 0; nCnt--)
+	{
+		//上位桁から算出していれる
+		pSprite[nCnt]->SetNumber(score % 10);
 
-    pScore->SetPosition(pos);
-    pScore->SetScale(Vector2(size.x, size.y));
-    pScore->SetTexture(FileName);
-    pScore->SetPolygonNum(polygonNum);
-
-    return pScore;
+		//桁を一つ減らす
+		score = score / 10;
+	}
 }
-Score* Score::Create(
-    const char* FileName,
-    const Vector3& pos,
-    const Vector2& size)
+
+
+/******************************************************************************
+@brief  スコア加算処理
+******************************************************************************/
+float Game::Score::GetScore(void)
 {
-    Score* pScore = new Score;
-
-    pScore->SetPosition(pos);
-    pScore->SetScale(Vector2(size.x, size.y));
-    pScore->SetTexture(FileName);
-    pScore->SetPolygonNum(polygonNum);
-
-    return pScore;
+	return m_score;//スコアの値を返す
 }
 
 /******************************** 実装ここまで *******************************/

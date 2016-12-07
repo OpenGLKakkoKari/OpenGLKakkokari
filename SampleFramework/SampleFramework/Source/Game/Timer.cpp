@@ -1,7 +1,9 @@
+
 /******************************************************************************
 /*!
 @file   Timer.cpp
 @author Yuki Kogawara
+@editor Daisuke Yokoyama -> 2016/12/5
 @copy   Copyright(C) 2016 Yuki Kogawara
 
 ******************************************************************************/
@@ -60,9 +62,9 @@ void Timer::Init(void)
 	{
 		pSprite[nCnt] = NumberSprite::Create(
 			// 座標
-			Vector2(((float)Manager::GetWindow()->GetWidth() / 16 * 8) + 50.0f - ( nCnt*100.0f), 100.0f),
+			Vector2(((float)Manager::GetWindow()->GetWidth() / 16 * 8) + 50.0f - ( nCnt*80.0f), 80.0f),
 			// 大きさ
-			Vector2(100.0f, 100.0f),
+			Vector2(80.0f, 80.0f),
 			// 色
 			Color(255, 255, 255, 255),
 			// テクスチャファイル名

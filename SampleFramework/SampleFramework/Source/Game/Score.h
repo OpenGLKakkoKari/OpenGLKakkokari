@@ -3,6 +3,7 @@
 /*!
 @file   Score.h
 @author Yuki Kogawara
+@editor Daisuke Yokoyama -> 2016/12/5
 @copy   Copyright(C) 2016 Yuki Kogawara
 
 ******************************************************************************/
@@ -12,46 +13,36 @@
 ******************************************************************************/
 
 
-#include "..\Framework\GameObject.h"
+#include "../Framework/GameObject.h"
+#include "../Framework/NumberSprite.h"
 
 
 /*  クラス定義
 ******************************************************************************/
 
 
-namespace Framework
-{
-    class NumberSprite;
-    class Vector2;
-};
 namespace Game
 {
-    class Score : public Framework::GameObject
-    {
-    public:
-        Score();
-        ~Score();
+	class Score : public Framework::GameObject
+	{
+	public:
+		enum { DIGIT_MAX = 3 };
+		enum { SCORE = 0 };
+		Score();
+		virtual ~Score();
 
-        void Init();
-        void Uninit(){}
-        void Update();
-        void SetValue(int value){ value_ = value; }
-        void AddValue(int value){ value_ += value; }
+		virtual void Init();
+		virtual void Uninit() {}
+		virtual void Update();
+		void AddScore (int);
+		float GetScore(void);
 
-        static Score* Create(const char* FileName,
-            const Framework::Vector3& pos,
-            const Framework::Vector2& size,
-            int value);
 
-        static Score* Create(const char* FileName,
-            const Framework::Vector3& pos,
-            const Framework::Vector2& size);
+	private:
+		Framework::NumberSprite* pSprite[DIGIT_MAX];
 
-    private:
-        int                         value_;
-        int                         digits_;
-        Framework::NumberSprite**   pNumberList;
-    };
+		float m_score;		//現在のスコア
+	};
 }
 
 

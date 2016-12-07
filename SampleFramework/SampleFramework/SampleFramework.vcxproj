@@ -14,12 +14,13 @@
     <ProjectGuid>{5B16F12D-A247-4E80-877B-B351DEDB7B29}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SampleFramework</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -157,6 +158,7 @@
     <ClCompile Include="Source\Framework\Windows\Window.cpp" />
     <ClCompile Include="Source\Game\GameScene.cpp" />
     <ClCompile Include="Source\Game\Plant.cpp" />
+    <ClCompile Include="Source\Game\Score.cpp" />
     <ClCompile Include="Source\Game\Skybox.cpp" />
     <ClCompile Include="Source\Game\Timer.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -266,6 +268,7 @@
     <ClInclude Include="Source\Game\GameCamera.h" />
     <ClInclude Include="Source\Game\GameScene.h" />
     <ClInclude Include="Source\Game\Plant.h" />
+    <ClInclude Include="Source\Game\Score.h" />
     <ClInclude Include="Source\Game\Skybox.h" />
     <ClInclude Include="Source\Game\Timer.h" />
     <ClInclude Include="Source\Main.h" />
