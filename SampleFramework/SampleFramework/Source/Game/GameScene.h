@@ -24,7 +24,6 @@ namespace Framework
     class Polygon;
     class Sprite;
     class Model;
-    class Effect;
     class Stage;
     class OBB;
 }
@@ -34,6 +33,7 @@ namespace Game
     class Player;
     class MeshField;
     class Timer;
+    class Explosion;
     class GameScene : public Framework::Scene
     {
     public:
@@ -59,7 +59,7 @@ namespace Game
         static Framework::Polygon*      pPolygon;
         static Framework::Model*        pModel;
         static Framework::OBB*          pOBB;
-        static Framework::Effect*       pEffect;
+        static Explosion*               pExplosion;
     };
 }
 

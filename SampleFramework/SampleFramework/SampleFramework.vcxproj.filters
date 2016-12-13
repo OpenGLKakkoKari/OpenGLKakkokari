@@ -164,12 +164,6 @@
     <ClCompile Include="Source\Framework\Windows\MainController.cpp">
       <Filter>Framework\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Framework\File\Reader\EffectReader.cpp">
-      <Filter>Framework\File\Reader</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Framework\Effect\Effect.cpp">
-      <Filter>Framework\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Framework\Effect\EffectBillboard.cpp">
       <Filter>Framework\Effect</Filter>
     </ClCompile>
@@ -233,9 +227,6 @@
     <ClCompile Include="Source\Framework\GameObject.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Framework\Effect\Emitter.cpp">
-      <Filter>Framework\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Framework\TokenAnalyzer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -295,6 +286,12 @@
     </ClCompile>
     <ClCompile Include="Source\Framework\DebugTool\Tweaker.cpp">
       <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\AnimationBillboard.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Explosion.cpp">
+      <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -460,18 +457,6 @@
     <ClInclude Include="Source\Framework\Windows\MainController.h">
       <Filter>Framework\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Framework\File\Reader\EffectReader.h">
-      <Filter>Framework\File\Reader</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Effect\Effect.h">
-      <Filter>Framework\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Effect\EffectData.h">
-      <Filter>Framework\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Framework\Effect\Emitter.h">
-      <Filter>Framework\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Framework\Effect\EffectBillboard.h">
       <Filter>Framework\Effect</Filter>
     </ClInclude>
@@ -556,9 +541,6 @@
     <ClInclude Include="Source\Framework\GameObject.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Framework\Effect\ParticleData.h">
-      <Filter>Framework\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Framework\VertexBuffer.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -636,6 +618,12 @@
     </ClInclude>
     <ClInclude Include="Source\Framework\DebugTool\Tweaker.h">
       <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Framework\AnimationBillboard.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Explosion.h">
+      <Filter>Source\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

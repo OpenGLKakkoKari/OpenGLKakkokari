@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="Source\DirectX\DirectXRenderer.cpp" />
     <ClCompile Include="Source\DirectX\DirectXTexture.cpp" />
+    <ClCompile Include="Source\Framework\AnimationBillboard.cpp" />
     <ClCompile Include="Source\Framework\Billboard.cpp" />
     <ClCompile Include="Source\Framework\Camera.cpp" />
     <ClCompile Include="Source\Framework\Collision\OBB.cpp" />
@@ -100,13 +101,10 @@
     <ClCompile Include="Source\Framework\DebugTool\Text.cpp" />
     <ClCompile Include="Source\Framework\DebugTool\Tweaker.cpp" />
     <ClCompile Include="Source\Framework\DrawObject.cpp" />
-    <ClCompile Include="Source\Framework\Effect\Effect.cpp" />
     <ClCompile Include="Source\Framework\Effect\EffectBillboard.cpp" />
-    <ClCompile Include="Source\Framework\Effect\Emitter.cpp" />
     <ClCompile Include="Source\Framework\Error.cpp" />
     <ClCompile Include="Source\Framework\Fade.cpp" />
     <ClCompile Include="Source\Framework\File\File.cpp" />
-    <ClCompile Include="Source\Framework\File\Reader\EffectReader.cpp" />
     <ClCompile Include="Source\Framework\File\Reader\ModelReader.cpp" />
     <ClCompile Include="Source\Framework\File\Reader\Reader.cpp" />
     <ClCompile Include="Source\Framework\File\Reader\SkinMeshModelReader.cpp" />
@@ -131,6 +129,7 @@
     <ClCompile Include="Source\Framework\StateManager.cpp" />
     <ClCompile Include="Source\Framework\TokenAnalyzer.cpp" />
     <ClCompile Include="Source\Game\Character\Player.cpp" />
+    <ClCompile Include="Source\Game\Explosion.cpp" />
     <ClCompile Include="Source\Game\Field.cpp" />
     <ClCompile Include="Source\Game\GameCamera.cpp" />
     <ClCompile Include="Source\Game\MeshField.cpp" />
@@ -184,8 +183,8 @@
     <ClInclude Include="Source\DirectX\DirectXTexture.h" />
     <ClInclude Include="Source\DirectX\DirectXTextureFactory.h" />
     <ClInclude Include="Source\DirectX\DirectXVertexBuffer.h" />
+    <ClInclude Include="Source\Framework\AnimationBillboard.h" />
     <ClInclude Include="Source\Framework\Billboard.h" />
-    <ClInclude Include="Source\Framework\Effect\ParticleData.h" />
     <ClInclude Include="Source\Framework\GameObject.h" />
     <ClInclude Include="Source\Framework\IndexBuffer.h" />
     <ClInclude Include="Source\Framework\Input\Joystick.h" />
@@ -199,14 +198,10 @@
     <ClInclude Include="Source\Framework\DebugTool\Text.h" />
     <ClInclude Include="Source\Framework\DebugTool\Tweaker.h" />
     <ClInclude Include="Source\Framework\DrawObject.h" />
-    <ClInclude Include="Source\Framework\Effect\Effect.h" />
     <ClInclude Include="Source\Framework\Effect\EffectBillboard.h" />
-    <ClInclude Include="Source\Framework\Effect\EffectData.h" />
-    <ClInclude Include="Source\Framework\Effect\Emitter.h" />
     <ClInclude Include="Source\Framework\Error.h" />
     <ClInclude Include="Source\Framework\Fade.h" />
     <ClInclude Include="Source\Framework\File\File.h" />
-    <ClInclude Include="Source\Framework\File\Reader\EffectReader.h" />
     <ClInclude Include="Source\Framework\File\Reader\ModelReader.h" />
     <ClInclude Include="Source\Framework\File\Reader\Reader.h" />
     <ClInclude Include="Source\Framework\File\Reader\SkinMeshModelReader.h" />
@@ -235,6 +230,7 @@
     <ClInclude Include="Source\Framework\TokenAnalyzer.h" />
     <ClInclude Include="Source\Framework\VertexBuffer.h" />
     <ClInclude Include="Source\Game\Character\Player.h" />
+    <ClInclude Include="Source\Game\Explosion.h" />
     <ClInclude Include="Source\Game\Field.h" />
     <ClInclude Include="Source\Game\MeshField.h" />
     <ClInclude Include="Source\Framework\Mesh\Model.h" />

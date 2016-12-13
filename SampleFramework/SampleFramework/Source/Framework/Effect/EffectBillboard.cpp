@@ -13,7 +13,6 @@
 #include "EffectBillboard.h"
 #include "../Manager.h"
 #include "../Math/Math.h"
-#include "Emitter.h"
 
 
 using namespace Framework;
@@ -78,17 +77,19 @@ void EffectBillboard::Draw(void)
 @param  size            サイズ
 @param  col             色
 @param  type            ビルボードの種類
+@param  animData        アニメーション情報
 @param  FileName        テクスチャのファイル名
 @return Billboard*      ビルボード情報へのポインタ
 ******************************************************************************/
 
-EffectBillboard* EffectBillboard::Create(const Vector3& pos, const Vector2& size, Color col, TYPE type, const char *FileName)
+EffectBillboard* EffectBillboard::Create(const Vector3& pos, const Vector2& size, Color col, TYPE type, AnimationData animData, const char *FileName)
 {
     EffectBillboard *pBillboard = new EffectBillboard;
     pBillboard->SetBillboardType(type);
     pBillboard->SetPosition(pos);
     pBillboard->SetScale(Vector2(size.x, size.y));
     pBillboard->SetColor(col);
+    pBillboard->SetAnimationData(animData);
     if (FileName)
         pBillboard->SetTexture(FileName);
     return pBillboard;

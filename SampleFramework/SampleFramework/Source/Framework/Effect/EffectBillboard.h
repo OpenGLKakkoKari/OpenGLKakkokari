@@ -11,7 +11,7 @@
 ******************************************************************************/
 
 
-#include "../Billboard.h"
+#include "../AnimationBillboard.h"
 
 
 /*  ƒNƒ‰ƒX’è‹`
@@ -20,7 +20,7 @@
 
 namespace Framework
 {
-    class EffectBillboard : public Billboard
+    class EffectBillboard : public AnimationBillboard
     {
     public:
         EffectBillboard();
@@ -28,7 +28,7 @@ namespace Framework
 
         void Draw();
 
-        static EffectBillboard* Create(const Vector3& pos, const Vector2& size, Color col, TYPE type, const char *FileName);
+        static EffectBillboard* Create(const Vector3& pos, const Vector2& size, Color col, TYPE type, AnimationData animData, const char *FileName);
 
         void SetBlendType(int blendType){ this->blendType = blendType; }
         void SetDepthWriteEnable(bool canDepthWrite){ this->canDepthWrite = canDepthWrite; }
@@ -38,6 +38,8 @@ namespace Framework
         int     blendType;
         bool    canDepthWrite;
         bool    canDepthTest;
+
+
     };
 }
 

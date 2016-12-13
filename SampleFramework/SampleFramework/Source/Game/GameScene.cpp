@@ -18,13 +18,12 @@
 #include "Timer.h"
 #include "../Title/TitleScene.h"
 #include "../Framework/Manager.h"
-#include "../Framework/File/Reader/EffectReader.h"
 #include "../Framework/File/Reader/TextReader.h"
 #include "../Framework/Math/Random.h"
 #include "../Framework/Math/Math.h"
 #include "../Framework/Collision/OBB.h"
 #include "../Framework/Sprite.h"
-#include "../Framework/Effect/Effect.h"
+#include "Explosion.h"
 
 
 using namespace Framework;
@@ -46,7 +45,7 @@ Framework::Sprite*          Game::GameScene::pBackground;
 Framework::Polygon*         Game::GameScene::pPolygon;
 Framework::Model*           Game::GameScene::pModel;
 Framework::OBB*             Game::GameScene::pOBB;
-Framework::Effect*          Game::GameScene::pEffect;
+Explosion*                  Game::GameScene::pExplosion;
 
 
 /*  ŽÀ‘•
@@ -92,6 +91,10 @@ void GameScene::Init(void)
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
 
+
+    pExplosion = new Explosion;
+    pExplosion->Init();
+
     //pMeshField = new MeshField("data/TEXTURE/Field/asphalt001.jpg", 2048, 2048, Vector2(10000.0f, 10000.0f), NULL);
 
     //pBackground = Sprite::Create(
@@ -120,10 +123,6 @@ void GameScene::Init(void)
 
     //pOBB = OBB::Create(pModel->pMesh, Vector3(0.0f, 0.0f, 0.0f), Vector3(0.0f, 0.0f, 0.0f));
 
-    pEffect = EffectReader::LoadEffect("data/EFFECT/explosion.effect");
-    pEffect->Pause();
-    pEffect->SetLoop(true);
-    pEffect->SetPosition(Vector3(0.0f, 0.0f, 1000.0f));
 
 
 }
@@ -147,8 +146,8 @@ void GameScene::Uninit(void)
     SAFE_DELETE(pPolygon);
     SAFE_DELETE(pModel);
     SAFE_DELETE(pOBB);
-    SAFE_DELETE(pEffect);
     SAFE_DELETE(pTimer);
+    SAFE_DELETE(pExplosion);
     Manager::GetSound()->Stop();
 }
 
@@ -163,10 +162,6 @@ void GameScene::Update(void)
     {
         TitleScene *pTitleScene = new TitleScene;
         Manager::SetFade(Fade::FADE_OUT, pTitleScene);
-    }
-    if (Manager::GetKeyboard()->Trigger('1'))
-    {
-        pEffect->Play();
     }
 
     if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_0))
@@ -190,7 +185,11 @@ void GameScene::Update(void)
         Manager::GetSound()->Play("SE5");
     }
 
-
+    if (Manager::GetKeyboard()->Trigger('5'))
+    {
+        Vector3 playerPos = pPlayer[0]->GetPosition();
+        pExplosion->Create(Vector3(playerPos.x, playerPos.y + 100.0f, playerPos.z));
+    }
 }
 
 /******************************** ŽÀ‘•‚±‚±‚Ü‚Å *******************************/
