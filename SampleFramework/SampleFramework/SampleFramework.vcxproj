@@ -131,6 +131,8 @@
     <ClCompile Include="Source\Framework\StateManager.cpp" />
     <ClCompile Include="Source\Framework\TokenAnalyzer.cpp" />
     <ClCompile Include="Source\Game\Character\Player.cpp" />
+    <ClCompile Include="Source\Game\Character\Player1Controller.cpp" />
+    <ClCompile Include="Source\Game\Character\Player2Controller.cpp" />
     <ClCompile Include="Source\Game\Field.cpp" />
     <ClCompile Include="Source\Game\GameCamera.cpp" />
     <ClCompile Include="Source\Game\MeshField.cpp" />
@@ -234,7 +236,10 @@
     <ClInclude Include="Source\Framework\StateManager.h" />
     <ClInclude Include="Source\Framework\TokenAnalyzer.h" />
     <ClInclude Include="Source\Framework\VertexBuffer.h" />
+    <ClInclude Include="Source\Game\Character\CharacterController.h" />
     <ClInclude Include="Source\Game\Character\Player.h" />
+    <ClInclude Include="Source\Game\Character\Player1Controller.h" />
+    <ClInclude Include="Source\Game\Character\Player2Controller.h" />
     <ClInclude Include="Source\Game\Field.h" />
     <ClInclude Include="Source\Game\MeshField.h" />
     <ClInclude Include="Source\Framework\Mesh\Model.h" />

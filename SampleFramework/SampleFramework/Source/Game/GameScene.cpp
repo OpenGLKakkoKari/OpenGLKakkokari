@@ -86,8 +86,9 @@ void GameScene::Init(void)
 	pTimer->Init();
 	
     pPlayer = new Player*[CHARACTER_MAX];
-    pPlayer[0] = new Player;
-	pPlayer[0]->Init() ;
+	pPlayer[0] = Player::Create(0);
+	pPlayer[1] = Player::Create(1);
+	pPlayer[1]->SetPosition(Vector3(0.0f, 0.0f, -500.0f));
 
     pCamera = new GameCamera;
     Manager::GetRenderer()->SetCamera(pCamera);
@@ -168,6 +169,11 @@ void GameScene::Update(void)
     {
         pEffect->Play();
     }
+
+	if(OBB::CheckCollision(pPlayer[0]->pOBBAttack_, pPlayer[1]->pOBBPlayer_))
+	{
+		Manager::GetDebug()->Print("Collision!\n");
+	}
 
     if (Manager::GetJoystick()->Trigger(Input::Joystick::BUTTON_0))
     {

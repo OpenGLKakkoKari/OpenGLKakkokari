@@ -11,6 +11,8 @@
 
 
 #include "Player.h"
+#include "Player1Controller.h"
+#include "Player2Controller.h"
 #include "../GameCamera.h"
 #include "../../Framework/Manager.h"
 #include "../../Framework/Math/Math.h"
@@ -29,6 +31,7 @@ using namespace Framework::Math;
 ******************************************************************************/
 
 Player::Player()
+	: pModel_(NULL), pOBBPlayer_(NULL), pOBBAttack_(NULL), pController_(NULL)
 {
     pModel_ = Model::Load("data/MODEL/hajime.x");
 
@@ -52,7 +55,8 @@ Player::~Player()
 {
 	SAFE_DELETE(pModel_)
 	SAFE_DELETE(pOBBPlayer_)
-	//SAFE_DELETE(pOBBAttack_)
+	SAFE_DELETE(pOBBAttack_)
+	SAFE_DELETE(pController_)
 }
 
 /******************************************************************************
@@ -62,7 +66,12 @@ Player::~Player()
 void Player::Init ( void )
 {
 	pOBBPlayer_ = OBB::Create ( pModel_ ->pMesh, pos_ , rot_ ) ;
-	//pOBBAttack_ = OBB::Create ( Vector3(50,50,50), Vector3(pos_.x,pos_.y+100,pos_.z-50) , rot_ ) ;
+	pOBBAttack_ = OBB::Create ( Vector3(50,50,50), Vector3(pos_.x,pos_.y+100,pos_.z-50) , rot_ ) ;
+
+
+	//変数初期化
+	t_ = 0 ;
+	bJump_ = false ;
 }
 
 /******************************************************************************
@@ -77,77 +86,74 @@ void Player::Update(void)
 	//ジャンプで使う変数
 	const float Vo = 50.0f ;		//初速度
 	const float gravity = -2.0f ;	//重力
-	static int t = 0 ;				//時間
-	static bool bJump = false ;		//ジャンプ中かどうか
 
-
-    if (Manager::GetKeyboard()->Press('A') &&
-        Manager::GetKeyboard()->Press('W'))
+    if (pController_->IsLeft() &&
+        pController_->IsUp())
     { // 左上移動
 		
 		pos_.x -= sinf( _PI / 4 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z += cosf( _PI / 4 + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('D') &&
-        Manager::GetKeyboard()->Press('W'))
+    else if (pController_->IsRight() &&
+        pController_->IsUp())
     { // 右上移動
 		pos_.x += sinf( ( _PI / 4 ) * 3 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z -= cosf( ( _PI / 4 ) * 3 + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('A') &&
-        Manager::GetKeyboard()->Press('S'))
+	else if (pController_->IsLeft() &&
+        pController_->IsDown())
     { // 左下移動
 		pos_.x -= sinf( ( _PI / 4 ) * 3 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z += cosf( ( _PI / 4 ) * 3 + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('D') &&
-        Manager::GetKeyboard()->Press('S'))
+    else if (pController_->IsRight() &&
+        pController_->IsDown())
     { // 右下移動
 		pos_.x += sinf( _PI / 4 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z -= cosf( _PI / 4 + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('W'))
+    else if (pController_->IsUp())
     { // 上移動
 		pos_.x += sinf( _PI + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z -= cosf( _PI + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('S'))
+    else if (pController_->IsDown())
     { // 下移動
 		pos_.x -= sinf( _PI + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z += cosf( _PI + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('A'))
+    else if (pController_->IsLeft())
     { // 左移動
 		pos_.x -= sinf( _PI / 2 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z += cosf( _PI / 2 + cameraRot.y ) * MODEL_MOVE ;
     }
-    else if (Manager::GetKeyboard()->Press('D'))
+	else if (pController_->IsRight())
     { // 右移動
 		pos_.x += sinf( _PI / 2 + cameraRot.y ) * MODEL_MOVE ;
 		pos_.z -= cosf( _PI / 2 + cameraRot.y ) * MODEL_MOVE ;
     }
 
 	//ジャンプ
-	if (Manager::GetKeyboard()->Trigger('J'))
+	if (pController_->IsJump())
 	{
-		bJump = true ;
+		bJump_ = true ;
 	}
 
 	//ジャンプ中なら
-	if ( bJump )
+	if ( bJump_ )
 	{
 		//速度計算
-		float v = Vo + gravity * t ;
+		float v = Vo + gravity * t_ ;
 
 		pos_.y += v ;
 
-		t ++ ;
+		t_ ++ ;
 
 		//着地したら
 		if ( pos_.y <= 0.0f )
 		{
-			bJump = false ;
-			t = 0 ;
+			bJump_ = false ;
+			t_ = 0 ;
 		}
 	}
 
@@ -187,9 +193,30 @@ void Player::Update(void)
 	pOBBPlayer_->pos = pos_ ;
 	pOBBPlayer_->pBox->SetPosition(pos_);
 
-	//pOBBAttack_->pos = Vector3(pos_.x,pos_.y+150,pos_.z-50) ;
-	//pOBBAttack_->pBox->SetPosition(Vector3(pos_.x,pos_.y+100,pos_.z-50));
+	pOBBAttack_->pos = Vector3(pos_.x,pos_.y+150,pos_.z-50) ;
+	pOBBAttack_->pBox->SetPosition(Vector3(pos_.x,pos_.y+100,pos_.z-50));
 
+}
+
+/******************************************************************************
+@brief  更新処理
+******************************************************************************/
+
+Player* Player::Create(int index)
+{
+	Player* pPlayer = new Player;
+	pPlayer->Init();
+	
+	switch(index)
+	{
+	case 0:		pPlayer->SetController(new Player1Controller);	break;
+	case 1:		pPlayer->SetController(new Player2Controller);	break;
+	case 2:		pPlayer->SetController(new Player1Controller);	break;
+	case 3:		pPlayer->SetController(new Player1Controller);	break;
+	default:	break;
+	}
+
+	return pPlayer;
 }
 
 /******************************** 実装ここまで *******************************/
