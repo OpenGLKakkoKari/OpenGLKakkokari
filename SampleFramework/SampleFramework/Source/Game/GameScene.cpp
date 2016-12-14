@@ -58,7 +58,7 @@ Framework::Effect*          Game::GameScene::pEffect;
 
 GameScene::GameScene()
 {
-    Manager::GetDebug()->Add("Game");
+    //Manager::GetDebug()->Add("Game");
 }
 
 /******************************************************************************
@@ -67,7 +67,7 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
-    Manager::GetDebug()->Delete("Game");
+   // Manager::GetDebug()->Delete("Game");
 }
 
 /******************************************************************************
