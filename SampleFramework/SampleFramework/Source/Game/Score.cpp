@@ -25,6 +25,7 @@ using namespace Game;
 
 /*  実装
 ******************************************************************************/
+#define SOCRE_LIMIT	(999)
 
 /******************************************************************************
 @brief  コンストラクタ
@@ -97,6 +98,9 @@ void Game::Score::AddScore(int add)
 {
 	//スコア加算
 	m_score += add;
+	if (m_score > SOCRE_LIMIT) {
+		m_score = SOCRE_LIMIT;//限界地処理
+	}
 
 	//今のスコアを保存
 	int score = m_score;

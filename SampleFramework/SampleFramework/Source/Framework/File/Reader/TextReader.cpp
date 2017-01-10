@@ -384,50 +384,13 @@ Stage* TextReader::LoadStage(const char *FileName)
         {
             pToken->GetToken();
             pToken->GetToken();
-            char fileName[256];
-            strcpy_s(fileName, 256, pToken->GetToken());
+            char textureFileName[256];
+            strcpy_s(textureFileName, 256, pToken->GetToken());
 
             pToken->GetToken();
             pToken->GetToken();
-            Vector3 fieldPos;
-            fieldPos.x = pToken->GetFloatToken();
-            fieldPos.y = pToken->GetFloatToken();
-            fieldPos.z = pToken->GetFloatToken();
-
-            pToken->GetToken();
-            pToken->GetToken();
-            float size_x = pToken->GetFloatToken();
-            float size_y = pToken->GetFloatToken();
-
-            pToken->GetToken();
-            pToken->GetToken();
-            int widthDiv  = pToken->GetIntToken();
-            int heightDiv = pToken->GetIntToken();
-
-            pToken->GetToken();
-            pToken->GetToken();
-
-            File dataFile;
-            int dataFileSize;
-            if (dataFile.Open(pToken->GetToken(), "rb"))
-            {
-                dataFileSize = dataFile.GetSize();
-
-                // バッファにファイルデータを格納
-                //float* pHeightMap = new float[dataFileSize / 4];
-                //dataFile.Read(pHeightMap, dataFileSize, 1);
-                dataFile.Close();
-
-                pStage->pFieldList[fieldCount] = new Field(fileName, widthDiv, heightDiv, Vector2(size_x, size_y), NULL);
-                pStage->pFieldList[fieldCount]->SetPosition(fieldPos);
-                //delete pHeightMap;
-                fieldCount++;
-            }
-            else
-            {
-                Error::Message("高さマップの読み込みに失敗しました。");
-            }
-
+			pStage->pFieldList[fieldCount] = LoadField(pToken->GetToken(), textureFileName);
+			fieldCount++;
         }
         
 //
@@ -534,6 +497,55 @@ Stage* TextReader::LoadStage(const char *FileName)
     delete[] pBuf;
 
     return pStage;
+}
+
+/******************************************************************************
+@brief  フィールド読み込み
+@param  binaryFileName		バイナリファイル名
+@param  textureFileName		テクスチャファイル名
+@return Field				フィールド情報
+******************************************************************************/
+
+Field* TextReader::LoadField(const char *binaryFileName, const char *textureFileName)
+{
+	Field* pField = NULL;
+
+	// ファイル読み込み
+	File file;
+	if (!file.Open(binaryFileName, "rb"))
+	{
+		Error::Message("ファイル\"%s\"の読み込みに失敗しました。", binaryFileName);
+		return pField;
+	}
+
+	float width = 0.0f;
+	float depth = 0.0f;
+	int widthDiv = 0;
+	int depthDiv = 0;
+	float* pHeightMap = NULL;
+	float heightMap[25];
+
+
+	file.Read(&width, sizeof(width), 1);
+	file.Read(&depth, sizeof(depth), 1);
+	file.Read(&widthDiv, sizeof(widthDiv), 1);
+	file.Read(&depthDiv, sizeof(depthDiv), 1);
+
+	pHeightMap = new float[(widthDiv + 1) * (depthDiv + 1)];
+	file.Read(&heightMap, sizeof(float) * (widthDiv + 1) * (depthDiv + 1), 1);
+
+	file.Close();
+
+	pField = new Field(
+		textureFileName,
+		widthDiv,
+		depthDiv,
+		Vector2(width, depth),
+		pHeightMap);
+
+	delete pHeightMap;
+
+	return pField;
 }
 
 /******************************* 関数ここまで ********************************/

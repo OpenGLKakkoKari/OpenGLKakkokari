@@ -11,9 +11,6 @@ SCRIPT          # Ç±ÇÃçsÇÕê‚ëŒè¡Ç≥Ç»Ç¢Ç±Ç∆ÅI
 
 FIELDSET
     TEXTURE = data/TEXTURE/Field/sand000.jpg
-    POS     = 0.0 0.0 0.0
-    SIZE    = 6000.0 6000.0
-    BLOCK   = 32 32
     DATA    = data/BINARY/test.hsd
 END_FIELD
 

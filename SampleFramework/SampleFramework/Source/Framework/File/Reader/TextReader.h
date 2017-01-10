@@ -29,6 +29,9 @@ namespace Framework
         public:
             static MotionModel* LoadMotionModel(const char *FileName);
             static Stage*       LoadStage(const char *FileName);
+
+		private:
+			static Game::Field*		LoadField(const char *binaryFileName, const char *textureFileName);
         };
     }
 }
